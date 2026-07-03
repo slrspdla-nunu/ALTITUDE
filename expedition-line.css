@@ -1,46 +1,4 @@
 
-        :root {
-            --gutter: 36px; --section-y: 88px; --hero-pt: 132px; --page-pt: 120px;
-            --fs-display: 48px;  /* 히어로 타이틀 */
-            --fs-h1: 40px;       /* 대표 제목 */
-            --fs-h2: 32px;       /* 섹션 대제목 */
-            --fs-h3: 24px;       /* 섹션 소제목/패널 타이틀 */
-            --fs-h4: 20px;       /* 카드/블록 제목 */
-            --fs-lg: 18px;       /* 내비/강조 */
-            --fs-md: 16px;       /* 리드 본문 */
-            --fs-base: 15px;     /* 기본 본문/UI */
-            --fs-sm: 14px;       /* 보조 텍스트/라벨 */
-            --fs-xs: 13px;       /* 메타/eyebrow */
-            --fs-2xs: 12px;      /* 배지/태그 */
-        }
-        * {margin: 0; padding: 0; box-sizing: border-box;}
-        li {list-style: none;}
-        a {text-decoration: none; color: inherit;}
-        button, select {font: inherit;}
-        img {vertical-align: top;}
-
-        @font-face {
-            font-family: 'A2z';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2');
-            font-weight: 400;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'A2z';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2');
-            font-weight: 600;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'A2z';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2');
-            font-weight: 800;
-            font-display: swap;
-        }
-
-        @font-face {font-family: 'A2z'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight: 700; font-display: swap;}
-        html {scrollbar-gutter: stable;}
-        body {word-break: keep-all; overflow-wrap: break-word;}
 
         body {
             font-family: 'A2z', sans-serif;
@@ -143,7 +101,10 @@
             display: flex;
             gap: 4px;
             overflow-x: auto;
+            scrollbar-width: none;        /* Firefox */
+            -ms-overflow-style: none;     /* IE/구 Edge */
         }
+        .category_bar ul::-webkit-scrollbar {display: none;}  /* Chrome/Safari */
 
         .category_bar a {
             display: block;
@@ -412,7 +373,7 @@
         }
 
         @media (max-width: 720px) {
-            header {padding: 0 20px;}
+            header {padding: 12px 20px;}
             header h1 {width: 78px;}
             header nav {min-width: 0;}
             header nav .gnb {overflow-x: auto; max-width: 100%;}
@@ -429,18 +390,6 @@
             .filter_panel {grid-template-columns: 1fr;}
             .product_grid {grid-template-columns: 1fr;}
             .feature_band {grid-template-columns: 1fr; padding: 28px;}
-        }
-            /* ===== 모바일 타입 스케일 다운 ===== */
-        @media (max-width: 720px) {
-            :root {
-                --fs-display: 34px; --fs-h1: 30px; --fs-h2: 26px; --fs-h3: 20px; --fs-h4: 18px; --fs-lg: 17px;
-            }
-        }
-            /* 모바일: 데스크톱 메뉴 숨김(햄버거로 대체, FOUC 방지) */
-        @media (max-width: 860px) {
-            header {box-sizing: border-box; padding: 12px 20px;}
-            header nav .gnb {display: none !important;}
-            header .header_util {display: none !important;}
         }
             /* 히어로 본문 모바일 축소 */
         @media (max-width: 560px) {

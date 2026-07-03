@@ -1,43 +1,4 @@
 
-        :root {
-            --gutter: 36px; --section-y: 88px; --hero-pt: 132px; --page-pt: 120px;
-            --fs-display: 48px;
-            --fs-h1: 40px;
-            --fs-h2: 32px;
-            --fs-h3: 24px;
-            --fs-h4: 20px;
-            --fs-lg: 18px;
-            --fs-md: 16px;
-            --fs-base: 15px;
-            --fs-sm: 14px;
-            --fs-xs: 13px;
-            --fs-2xs: 12px;
-        }
-        * {margin: 0; padding: 0; box-sizing: border-box;}
-        li {list-style: none;}
-        a {text-decoration: none; color: inherit;}
-        button {font: inherit;}
-        img {vertical-align: top;}
-
-        @font-face {
-            font-family: 'A2z';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2');
-            font-weight: 400; font-display: swap;
-        }
-        @font-face {
-            font-family: 'A2z';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2');
-            font-weight: 600; font-display: swap;
-        }
-        @font-face {
-            font-family: 'A2z';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2');
-            font-weight: 800; font-display: swap;
-        }
-
-        @font-face {font-family: 'A2z'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight: 700; font-display: swap;}
-        html {scrollbar-gutter: stable;}
-        body {word-break: keep-all; overflow-wrap: break-word;}
         body {font-family: 'A2z', sans-serif; color: #111820; background: #fff;}
 
         /* ===== 헤더 (라이트, 위치는 타 페이지와 동일) ===== */
@@ -127,13 +88,13 @@
         .order_btn:hover {border-color: #111820; color: #111820;}
 
         /* 위시리스트 (상품 카드) */
-        .wish_grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;}
+        .wish_grid {display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;}
         .wish_visual {position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: #f0f2f4; border: 1px solid #eef2f4;}
         .wish_visual img {width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease;}
         .wish_card:hover .wish_visual img {transform: scale(1.05);}
         .wish_heart {position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; color: #d94a3d; font-size: var(--fs-base);}
         .wish_card .b {margin-top: 12px; font-size: var(--fs-2xs); font-weight: 600; color: #97a3ad; letter-spacing: 0.04em;}
-        .wish_card .nm {margin-top: 4px; font-size: var(--fs-sm); font-weight: 600; color: #1a242e; line-height: 1.4;}
+        .wish_card .nm {margin-top: 4px; font-size: var(--fs-sm); font-weight: 600; color: #1a242e; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
         .wish_card .pr {margin-top: 6px; font-size: var(--fs-base); font-weight: 700;}
 
         /* 최근 본 상품 (소형 가로) */
@@ -141,7 +102,7 @@
         .recent_row .r {width: 84px;}
         .recent_row .r .th {aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: #f0f2f4; border: 1px solid #eef2f4;}
         .recent_row .r .th img {width: 100%; height: 100%; object-fit: cover; display: block;}
-        .recent_row .r .nm {margin-top: 6px; font-size: var(--fs-2xs); color: #6b7884; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
+        .recent_row .r .nm {margin-top: 6px; font-size: var(--fs-2xs); color: #6b7884; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
         /* 회원정보 리스트 */
         .info_list dl {display: flex; padding: 14px 0; border-top: 1px solid #f0f3f5; font-size: var(--fs-base);}
@@ -150,7 +111,7 @@
         .info_list dd {color: #24313d; font-weight: 600;}
 
         @media (max-width: 860px) {
-            header {padding: 0 20px;}
+            header {padding: 12px 20px;}
             header h1 {width: 78px;}
             header nav .gnb {overflow-x: auto;}
             header nav .gnb li {font-size: var(--fs-sm);}
@@ -161,18 +122,22 @@
             .status_steps {overflow-x: auto;}
             .status_steps .step {min-width: 60px;}
             .quick_grid {grid-template-columns: repeat(2, 1fr);}
-            .wish_grid {grid-template-columns: repeat(2, 1fr);}
-        }
-            /* ===== 모바일 타입 스케일 다운 ===== */
-        @media (max-width: 720px) {
-            :root {
-                --fs-display: 34px; --fs-h1: 30px; --fs-h2: 26px; --fs-h3: 20px; --fs-h4: 18px; --fs-lg: 17px;
-            }
-        }
-            /* 모바일: 데스크톱 메뉴 숨김(햄버거로 대체, FOUC 방지) */
-        @media (max-width: 860px) {
-            header {box-sizing: border-box; padding: 12px 20px;}
-            header nav .gnb {display: none !important;}
-            header .header_util {display: none !important;}
+            .wish_grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
         }
     
+/* 모바일: 주문 처리 현황 5단계를 한 화면에 (스크롤 제거) */
+@media (max-width: 560px) {
+    .order_status {padding: 20px 12px;}
+    .status_steps {overflow-x: visible;}
+    .status_steps .step {min-width: 0;}
+    .status_steps .step .n {font-size: var(--fs-h4);}
+    .status_steps .step .l {font-size: var(--fs-2xs);}
+    .status_steps .arw {width: 10px; font-size: var(--fs-xs);}
+}
+
+/* 모바일: 최근 주문 카드 — 버튼을 아래 줄로 내려 상품명 폭 확보 */
+@media (max-width: 560px) {
+    .order_item {flex-wrap: wrap; gap: 12px 14px; padding: 14px;}
+    .order_info .nm {font-size: var(--fs-sm);}
+    .order_btn {order: 3; flex: 1 0 100%; justify-content: center; height: 38px;}
+}

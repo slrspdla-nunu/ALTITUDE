@@ -122,7 +122,7 @@
         .p_badge.accent {background: #1789c4;}
         .p_info {padding: 16px 18px 20px;}
         .p_info .brand {margin-bottom: 6px; color: #97a3ad; font-size: var(--fs-2xs); font-weight: 600; letter-spacing: 0.05em;}
-        .p_info h3 {font-size: var(--fs-base); line-height: 1.45; font-weight: 600; color: #1a242e;}
+        .p_info h3 {font-size: var(--fs-base); line-height: 1.45; font-weight: 600; color: #1a242e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
         .p_info .price {margin-top: 12px; font-size: var(--fs-md); font-weight: 700;}
 
         /* 컬렉션 라인 바로가기 */
@@ -158,7 +158,7 @@
             .sec_head h2 {font-size: var(--fs-h3);}
         }
         @media (max-width: 560px) {
-            .hp_grid {grid-template-columns: 1fr;}
+            .hp_grid {grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;}
             .hf_inner h2 {font-size: var(--fs-h3);}
             .hf_inner p {font-size: var(--fs-sm); margin-top: 14px;}
         }
@@ -222,7 +222,7 @@
             .textbox li.text2 span {font-size: var(--fs-h4);}
         }
         @media (max-width: 720px) {
-            header {padding: 0 20px;}
+            header {padding: 12px 20px;}
             header h1 {width: 78px;}
             header nav .gnb {overflow-x: auto; max-width: 100%;}
             header nav .gnb li {font-size: var(--fs-sm);}

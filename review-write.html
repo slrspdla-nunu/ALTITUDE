@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리뷰 작성 | BEYOND THE SUMMIT</title>
     <script>if (!localStorage.getItem('bts_user')) { location.replace('login.html'); }</script>
-    <link rel="stylesheet" href="review-write.css">
+    <link rel="stylesheet" href="common.css?v=6">
+    <link rel="stylesheet" href="review-write.css?v=6">
 </head>
 <body>
     <header>
@@ -57,7 +58,7 @@
 
             <div class="field">
                 <label for="rvText">리뷰 내용</label>
-                <textarea id="rvText" placeholder="상품에 대한 솔직한 후기를 남겨주세요. (최소 10자)"></textarea>
+                <textarea id="rvText" placeholder="상품에 대한 솔직한 후기를 남겨주세요.&#10;(최소 10자)"></textarea>
             </div>
 
             <div class="field">
@@ -117,8 +118,8 @@
             msg.className = 'form_msg ok'; msg.textContent = '리뷰가 등록되었습니다. (데모 사이트)';
         });
     </script>
-    <script src="search.js" defer></script>
-    <script src="footer.js" defer></script>
-    <script src="mobile-nav.js" defer></script>
+    <script src="search.js?v=6" defer></script>
+    <script src="footer.js?v=6" defer></script>
+    <script src="mobile-nav.js?v=6" defer></script>
 </body>
 </html>

@@ -1,48 +1,5 @@
+:root {--select-arrow-offset: 22px; --select-text-right-space: 52px;}
 
-        :root {
-            --gutter: 36px; --section-y: 88px; --hero-pt: 132px; --page-pt: 120px;
-            --fs-display: 48px;  /* 히어로 타이틀 */
-            --fs-h1: 40px;       /* 대표 제목 */
-            --fs-h2: 32px;       /* 섹션 대제목 */
-            --fs-h3: 24px;       /* 섹션 소제목/패널 타이틀 */
-            --fs-h4: 20px;       /* 카드/블록 제목 */
-            --fs-lg: 18px;       /* 내비/강조 */
-            --fs-md: 16px;       /* 리드 본문 */
-            --fs-base: 15px;     /* 기본 본문/UI */
-            --fs-sm: 14px;       /* 보조 텍스트/라벨 */
-            --fs-xs: 13px;       /* 메타/eyebrow */
-            --fs-2xs: 12px;      /* 배지/태그 */
-            --select-arrow-offset: 22px;
-            --select-text-right-space: 52px;
-        }
-        * {margin: 0; padding: 0; box-sizing: border-box;}
-        li {list-style: none;}
-        a {text-decoration: none; color: inherit;}
-        button, select {font: inherit;}
-        img {vertical-align: top;}
-
-        @font-face {
-            font-family: 'A2z';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2');
-            font-weight: 400;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'A2z';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2');
-            font-weight: 600;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'A2z';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2');
-            font-weight: 800;
-            font-display: swap;
-        }
-
-        @font-face {font-family: 'A2z'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight: 700; font-display: swap;}
-        html {scrollbar-gutter: stable;}
-        body {word-break: keep-all; overflow-wrap: break-word;}
         body {font-family: 'A2z', sans-serif; color: #111820; background: #f5f7f8;}
 
         header {position: absolute; max-width: 1400px; left: 50%; top: 0; transform: translateX(-50%); display: flex; justify-content: space-between; align-items: center; width: 100%; z-index: 15;}
@@ -408,7 +365,7 @@
         }
 
         @media (max-width: 720px) {
-            header {padding: 0 20px;}
+            header {padding: 12px 20px;}
             header h1 {width: 78px;}
             header nav .gnb {overflow-x: auto;}
             header nav .gnb li {font-size: var(--fs-sm);}
@@ -430,16 +387,12 @@
             .detail_image_caption {grid-template-columns: 1fr; gap: 12px; padding: 24px 20px;}
             .review_summary {grid-template-columns: 1fr; gap: 20px; padding: 24px;}
         }
-            /* ===== 모바일 타입 스케일 다운 ===== */
-        @media (max-width: 720px) {
-            :root {
-                --fs-display: 34px; --fs-h1: 30px; --fs-h2: 26px; --fs-h3: 20px; --fs-h4: 18px; --fs-lg: 17px;
-            }
-        }
-            /* 모바일: 데스크톱 메뉴 숨김(햄버거로 대체, FOUC 방지) */
-        @media (max-width: 860px) {
-            header {box-sizing: border-box; padding: 12px 20px;}
-            header nav .gnb {display: none !important;}
-            header .header_util {display: none !important;}
-        }
     
+/* 모바일: Q&A 질문 제목 풀폭 한 줄 확보 (배지·날짜는 윗줄) */
+@media (max-width: 560px) {
+    .qna_q {flex-wrap: wrap; align-items: center; column-gap: 10px; row-gap: 10px;}
+    .qna_q .badge {order: 1;}
+    .qna_q .meta {order: 2; margin-left: auto;}
+    .qna_q .arrow {order: 3;}
+    .qna_q .qtext {order: 4; flex: 1 1 100%; font-size: var(--fs-sm);}
+}
