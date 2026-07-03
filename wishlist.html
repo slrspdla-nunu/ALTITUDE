@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위시리스트 | BEYOND THE SUMMIT</title>
+    <script>if (!localStorage.getItem('bts_user')) { location.replace('login.html'); }</script>
+    <link rel="stylesheet" href="wishlist.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+        <nav>
+            <ul class="gnb">
+                <li><a href="collection.html">컬렉션</a></li>
+                <li><a href="technology.html">테크놀로지</a></li>
+                <li><a href="expedition.html">익스페디션</a></li>
+                <li><a href="story.html">스토리</a></li>
+                <li><a href="store.html">스토어</a></li>
+            </ul>
+        </nav>
+        <div class="header_util">
+            <a href="#">검색</a>
+            <a href="login.html">로그인</a>
+            <a href="cart.html">장바구니</a>
+        </div>
+    </header>
+
+    <main class="acct">
+        <div class="crumb"><a href="index.html">홈</a><span>›</span><a href="mypage.html">마이페이지</a><span>›</span><strong>위시리스트</strong></div>
+        <div class="acct_head">
+            <div class="eyebrow">WISHLIST</div>
+            <h2>위시리스트</h2>
+        </div>
+
+        <div class="wl_toolbar">
+            <div class="left">
+                <label class="wl_selall"><input type="checkbox" id="selAll"> 전체 선택</label>
+                <button class="wl_delsel" type="button" id="delSel">선택 삭제</button>
+            </div>
+            <div class="wl_count">총 <b id="wlCount">4</b>개</div>
+        </div>
+
+        <div class="wl_grid" id="wlGrid">
+            <article class="wl_card">
+                <div class="wl_visual"><input type="checkbox" class="wl_check" aria-label="선택"><img src="images/product-parka.png" alt="서밋 프로텍트 다운 파카"></div>
+                <div class="wl_body"><div class="b">ALTITUDE</div><div class="nm">서밋 프로텍트 다운 파카</div><div class="pr">489,000원</div><button class="wl_cart" type="button">장바구니 담기</button></div>
+            </article>
+            <article class="wl_card">
+                <div class="wl_visual"><input type="checkbox" class="wl_check" aria-label="선택"><img src="images/product-shell-jacket.png" alt="알파 쉴드 3L 재킷"></div>
+                <div class="wl_body"><div class="b">ALTITUDE</div><div class="nm">알파 쉴드 3L 재킷</div><div class="pr">369,000원</div><button class="wl_cart" type="button">장바구니 담기</button></div>
+            </article>
+            <article class="wl_card">
+                <div class="wl_visual"><input type="checkbox" class="wl_check" aria-label="선택"><img src="images/product-backpack.png" alt="알파인 루트 백팩 45"></div>
+                <div class="wl_body"><div class="b">ALTITUDE</div><div class="nm">알파인 루트 백팩 45</div><div class="pr">219,000원</div><button class="wl_cart" type="button">장바구니 담기</button></div>
+            </article>
+            <article class="wl_card">
+                <div class="wl_visual"><input type="checkbox" class="wl_check" aria-label="선택"><img src="images/product-gloves.png" alt="써멀 글러브 시스템"></div>
+                <div class="wl_body"><div class="b">ALTITUDE</div><div class="nm">써멀 글러브 시스템</div><div class="pr">79,000원</div><button class="wl_cart" type="button">장바구니 담기</button></div>
+            </article>
+        </div>
+
+        <div class="wl_empty" id="wlEmpty" style="display:none;">
+            위시리스트가 비어 있습니다.
+            <br>
+            <a href="store.html">쇼핑하러 가기 →</a>
+        </div>
+
+        <div class="wl_foot"><a href="mypage.html">목록으로</a></div>
+    </main>
+
+    <div class="wl_toast" id="wlToast"></div>
+
+    <script>
+        var grid = document.getElementById('wlGrid');
+        var selAll = document.getElementById('selAll');
+        var countEl = document.getElementById('wlCount');
+        var emptyEl = document.getElementById('wlEmpty');
+        var toast = document.getElementById('wlToast');
+        var toastTimer;
+
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+        }
+        function refresh() {
+            var cards = grid.querySelectorAll('.wl_card');
+            countEl.textContent = cards.length;
+            emptyEl.style.display = cards.length ? 'none' : 'block';
+            var checks = grid.querySelectorAll('.wl_check');
+            var allChecked = checks.length > 0 && [...checks].every(function (c) { return c.checked; });
+            selAll.checked = allChecked;
+        }
+        selAll.addEventListener('change', function () {
+            grid.querySelectorAll('.wl_check').forEach(function (c) { c.checked = selAll.checked; });
+        });
+        document.getElementById('delSel').addEventListener('click', function () {
+            var checked = grid.querySelectorAll('.wl_check:checked');
+            if (!checked.length) { showToast('선택된 상품이 없습니다.'); return; }
+            checked.forEach(function (c) { c.closest('.wl_card').remove(); });
+            refresh();
+            showToast('선택한 상품을 삭제했습니다.');
+        });
+        grid.addEventListener('click', function (e) {
+            if (e.target.classList.contains('wl_cart')) { showToast('장바구니에 담았습니다. (데모)'); }
+        });
+        grid.addEventListener('change', function (e) { if (e.target.classList.contains('wl_check')) refresh(); });
+        refresh();
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
+</body>
+</html>

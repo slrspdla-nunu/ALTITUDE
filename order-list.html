@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문 내역 | BEYOND THE SUMMIT</title>
+    <script>if (!localStorage.getItem('bts_user')) { location.replace('login.html'); }</script>
+    <link rel="stylesheet" href="order-list.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+        <nav>
+            <ul class="gnb">
+                <li><a href="collection.html">컬렉션</a></li>
+                <li><a href="technology.html">테크놀로지</a></li>
+                <li><a href="expedition.html">익스페디션</a></li>
+                <li><a href="story.html">스토리</a></li>
+                <li><a href="store.html">스토어</a></li>
+            </ul>
+        </nav>
+        <div class="header_util">
+            <a href="#">검색</a>
+            <a href="login.html">로그인</a>
+            <a href="cart.html">장바구니</a>
+        </div>
+    </header>
+
+    <main class="acct">
+        <div class="crumb"><a href="index.html">홈</a><span>›</span><a href="mypage.html">마이페이지</a><span>›</span><strong>주문 내역</strong></div>
+        <div class="acct_head">
+            <div class="eyebrow">ORDER HISTORY</div>
+            <h2>주문 내역</h2>
+        </div>
+
+        <div class="ol_filter" id="olFilter">
+            <button type="button" data-f="all" class="active">전체<span class="c" id="cAll"></span></button>
+            <button type="button" data-f="shipping">배송중<span class="c" id="cShip"></span></button>
+            <button type="button" data-f="done">배송완료<span class="c" id="cDone"></span></button>
+        </div>
+
+        <div id="olList"></div>
+        <div class="ol_empty" id="olEmpty" style="display:none;">해당 상태의 주문이 없습니다.</div>
+
+        <div class="backline"><a href="mypage.html">마이페이지로 돌아가기</a></div>
+    </main>
+
+    <script>
+        var ORDERS = [
+            {
+                id: '20260628-0012', date: '2026.06.28', status: 'shipping', total: '539,600원',
+                items: [
+                    { img: 'images/product-parka.png', nm: '서밋 프로텍트 다운 파카', op: 'Black Ice / M · 수량 1', pr: '489,000원' },
+                    { img: 'images/product-gloves.png', nm: '써멀 글러브 시스템', op: '블랙 / M · 수량 1', pr: '79,000원' }
+                ]
+            },
+            {
+                id: '20260514-0088', date: '2026.05.14', status: 'done', total: '141,550원',
+                items: [
+                    { img: 'images/product-fleece.png', nm: '그리드 웜 미드레이어', op: '그레이 / L · 수량 1', pr: '149,000원' }
+                ]
+            },
+            {
+                id: '20260302-0041', date: '2026.03.02', status: 'done', total: '482,600원',
+                items: [
+                    { img: 'images/product-shell-jacket.png', nm: '알파 쉴드 3L 재킷', op: '스톰 그레이 / M · 수량 1', pr: '369,000원' },
+                    { img: 'images/product-pants.png', nm: '하이크 테크 스트레치 팬츠', op: '블랙 / 32 · 수량 1', pr: '139,000원' }
+                ]
+            }
+        ];
+
+        function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+        function cardHtml(o) {
+            var badge = o.status === 'done'
+                ? '<span class="badge done">배송완료</span>'
+                : '<span class="badge ship">배송중</span>';
+            var items = o.items.map(function (it) {
+                return '<div class="order_item"><div class="order_thumb"><img src="' + esc(it.img) + '" alt="' + esc(it.nm) + '"></div>' +
+                    '<div class="order_info"><div class="nm">' + esc(it.nm) + '</div><div class="op">' + esc(it.op) + '</div><div class="pr">' + esc(it.pr) + '</div></div></div>';
+            }).join('');
+            var action = o.status === 'done'
+                ? '<a class="line" href="order-detail.html?order=' + esc(o.id) + '">상세 보기</a><a class="dark" href="review-write.html">리뷰 작성</a>'
+                : '<a class="line" href="order-detail.html?order=' + esc(o.id) + '">배송조회</a><a class="dark" href="order-detail.html?order=' + esc(o.id) + '">상세 보기</a>';
+            return '<div class="ol_card" data-status="' + o.status + '">' +
+                '<div class="ol_top"><div class="info">' + esc(o.date) + '<span class="no">주문번호 ' + esc(o.id) + '</span></div>' + badge + '</div>' +
+                items +
+                '<div class="ol_foot"><div class="total">총 결제금액<b>' + esc(o.total) + '</b></div><div class="btns">' + action + '</div></div>' +
+                '</div>';
+        }
+
+        document.getElementById('olList').innerHTML = ORDERS.map(cardHtml).join('');
+
+        // 개수
+        document.getElementById('cAll').textContent = ORDERS.length;
+        document.getElementById('cShip').textContent = ORDERS.filter(function (o) { return o.status === 'shipping'; }).length;
+        document.getElementById('cDone').textContent = ORDERS.filter(function (o) { return o.status === 'done'; }).length;
+
+        // 필터
+        var emptyEl = document.getElementById('olEmpty');
+        document.getElementById('olFilter').addEventListener('click', function (e) {
+            var btn = e.target.closest('button');
+            if (!btn) return;
+            this.querySelectorAll('button').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var f = btn.dataset.f;
+            var shown = 0;
+            document.querySelectorAll('.ol_card').forEach(function (c) {
+                var vis = f === 'all' || c.dataset.status === f;
+                c.style.display = vis ? '' : 'none';
+                if (vis) shown++;
+            });
+            emptyEl.style.display = shown ? 'none' : 'block';
+        });
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+
+        :root {
+            --fs-display: 48px; --fs-h1: 40px; --fs-h2: 32px; --fs-h3: 24px; --fs-h4: 20px;
+            --fs-lg: 18px; --fs-md: 16px; --fs-base: 15px; --fs-sm: 14px; --fs-xs: 13px; --fs-2xs: 12px;
+        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        li {list-style: none;}
+        a {text-decoration: none; color: inherit;}
+        button {font: inherit;}
+        img {vertical-align: top;}
+        @font-face {font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2'); font-weight:400; font-display:swap;}
+        @font-face {font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2'); font-weight:600; font-display:swap;}
+        @font-face {font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2'); font-weight:800; font-display:swap;}
+        @font-face {font-family: 'A2z'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight: 700; font-display: swap;}
+        html {scrollbar-gutter: stable;}
+        body {word-break: keep-all; overflow-wrap: break-word;}
+        body {font-family:'A2z', sans-serif; color:#111820; background:#fff;}
+
+        header {position: absolute; max-width: 1400px; left: 50%; top: 0; transform: translateX(-50%); display: flex; justify-content: space-between; align-items: center; width: 100%; z-index: 15;}
+        header h1 {width: 100px;}
+        header h1 img {width: 100%;}
+        header nav .gnb {display: flex;}
+        header nav .gnb li {font-size: var(--fs-lg); font-weight: 600; transition: 0.25s;}
+        header nav .gnb li a {color: #111820; display: block; padding: 10px 30px;}
+        header nav .gnb:hover li {transform: scale(0.9); opacity: 0.7;}
+        header nav .gnb li:hover {transform: scale(1.1); opacity: 1;}
+        header nav .gnb li:hover a {color: #1789c4;}
+        header .header_util {display: flex; align-items: center; gap: 20px;}
+        header .header_util a {color: #36434f; font-size: var(--fs-sm); font-weight: 600; transition: 0.2s;}
+        header .header_util a:hover {color: #1789c4;}
+        header a:focus, header a:focus-visible {outline: none;}
+
+        .cart {max-width: 1240px; margin: 0 auto; padding: 170px 36px 90px;}
+
+        .steps {display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 44px;}
+        .steps .s {display: flex; align-items: center; gap: 8px; font-size: var(--fs-sm); font-weight: 600; color: #c4ccd2;}
+        .steps .s .num {width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #d6dde3; display: flex; align-items: center; justify-content: center; font-size: var(--fs-2xs);}
+        .steps .s.on {color: #111820;}
+        .steps .s.on .num {background: #111820; border-color: #111820; color: #fff;}
+        .steps .s.done {color: #6b7884;}
+        .steps .s.done .num {background: #1789c4; border-color: #1789c4; color: #fff;}
+        .steps .sep {color: #d6dde3; font-size: var(--fs-sm);}
+
+        .done_hero {text-align: center; padding-bottom: 34px; margin-bottom: 30px; border-bottom: 1px solid #e5eaee;}
+        .done_check {width: 72px; height: 72px; margin: 0 auto 22px; border-radius: 50%; background: #eaf6fd; display: flex; align-items: center; justify-content: center;}
+        .done_check svg {width: 36px; height: 36px; stroke: #1789c4; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;}
+        .done_hero h2 {font-size: var(--fs-h2); font-weight: 700; margin-bottom: 12px;}
+        .done_hero p {font-size: var(--fs-base); color: #6b7884; line-height: 1.65;}
+
+        .done_box {border: 1px solid #e5eaee; border-radius: 8px; padding: 8px 22px; margin-bottom: 30px;}
+        .done_box .r {display: flex; align-items: center; justify-content: space-between; padding: 15px 0; border-top: 1px solid #f0f3f5; font-size: var(--fs-base);}
+        .done_box .r:first-child {border-top: none;}
+        .done_box .r .k {color: #8a98a5; font-weight: 600;}
+        .done_box .r .v {color: #24313d; font-weight: 600;}
+        .done_box .r .v.amt {font-size: var(--fs-h4); font-weight: 700;}
+        .done_box .r .v.point {color: #1789c4;}
+
+        .done_btns {display: flex; gap: 10px;}
+        .done_btns a {flex: 1; height: 54px; border-radius: 3px; font-size: var(--fs-md); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; transition: 0.15s;}
+        .btn_line {border: 1px solid #d6dde3; background: #fff; color: #36434f;}
+        .btn_line:hover {border-color: #111820; color: #111820;}
+        .btn_dark {border: 1px solid #111820; background: #111820; color: #fff;}
+        .btn_dark:hover {background: #26333f;}
+
+        @media (max-width: 860px) {
+            header {padding: 0 20px;}
+            header h1 {width: 78px;}
+            header nav .gnb {overflow-x: auto;}
+            header nav .gnb li {font-size: var(--fs-sm);}
+            header nav .gnb li a {padding: 10px 12px;}
+            header .header_util {display: none;}
+            .cart {padding: 100px 20px 64px;}
+            .done_btns {flex-direction: column;}
+        }
+            /* ===== 모바일 타입 스케일 다운 ===== */
+        @media (max-width: 720px) {
+            :root {
+                --fs-display: 34px; --fs-h1: 30px; --fs-h2: 26px; --fs-h3: 20px; --fs-h4: 18px; --fs-lg: 17px;
+            }
+        }
+            /* 모바일: 데스크톱 메뉴 숨김(햄버거로 대체, FOUC 방지) */
+        @media (max-width: 860px) {
+            header {box-sizing: border-box; padding: 12px 20px;}
+            header nav .gnb {display: none !important;}
+            header .header_util {display: none !important;}
+        }
+    

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 | BEYOND THE SUMMIT</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+        <nav>
+            <ul class="gnb">
+                <li><a href="collection.html">컬렉션</a></li>
+                <li><a href="technology.html">테크놀로지</a></li>
+                <li><a href="expedition.html">익스페디션</a></li>
+                <li><a href="story.html">스토리</a></li>
+                <li><a href="store.html">스토어</a></li>
+            </ul>
+        </nav>
+        <div class="header_util">
+            <a href="#">검색</a>
+            <a href="login.html">로그인</a>
+            <a href="cart.html">장바구니</a>
+        </div>
+    </header>
+
+    <main class="cart">
+        <div class="crumb"><a href="index.html">홈</a><span>›</span><strong>장바구니</strong></div>
+        <div class="cart_head">
+            <div class="eyebrow">CART</div>
+            <h2>장바구니</h2>
+        </div>
+
+        <div class="steps">
+            <div class="s on"><span class="num">1</span>장바구니</div>
+            <span class="sep">›</span>
+            <div class="s"><span class="num">2</span>주문서 작성</div>
+            <span class="sep">›</span>
+            <div class="s"><span class="num">3</span>주문 완료</div>
+        </div>
+
+        <div class="cart_wrap" id="cartWrap">
+            <div class="cart_main">
+                <div class="cart_bar">
+                    <label class="selall"><input type="checkbox" id="selAll" checked> 전체 선택</label>
+                    <button class="delsel" type="button" id="delSel">선택 삭제</button>
+                </div>
+                <div id="cartList"></div>
+            </div>
+
+            <aside class="cart_side">
+                <h3>결제 예상 금액</h3>
+                <div class="sum_row"><span>상품 금액</span><span class="v" id="sumGoods">0원</span></div>
+                <div class="sum_row" id="sumShipRow"><span>배송비</span><span class="v" id="sumShip">무료</span></div>
+                <div class="sum_total"><span class="lb">총 결제예상금액</span><span class="amt" id="sumTotal">0원</span></div>
+                <div class="sum_point" id="sumPoint">적립 예정 0P</div>
+                <button class="order_go" type="button" id="orderGo">주문하기</button>
+                <a class="keep_shop" href="store.html">쇼핑 계속하기</a>
+                <p class="ship_note">50,000원 이상 구매 시 무료배송이며,<br>미만은 배송비 3,000원이 부과됩니다.</p>
+            </aside>
+        </div>
+
+        <div class="cart_empty" id="cartEmpty" style="display:none;">
+            장바구니에 담긴 상품이 없습니다.
+            <br>
+            <a href="store.html">쇼핑하러 가기 →</a>
+        </div>
+    </main>
+
+    <div class="cart_toast" id="cartToast"></div>
+
+    <script>
+        var CART = [
+            { img: 'images/product-parka.png', b: 'ALTITUDE', nm: '서밋 프로텍트 다운 파카', op: 'Black Ice / M', price: 489000, qty: 1 },
+            { img: 'images/product-shell-jacket.png', b: 'ALTITUDE', nm: '알파 쉴드 3L 재킷', op: '스톰 그레이 / M', price: 369000, qty: 1 },
+            { img: 'images/product-gloves.png', b: 'ALTITUDE', nm: '써멀 글러브 시스템', op: '블랙 / M', price: 79000, qty: 2 }
+        ];
+        var FREE_SHIP = 50000, SHIP_FEE = 3000, POINT_RATE = 0.03;
+
+        function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+        function won(n) { return n.toLocaleString('en-US') + '원'; }
+
+        var listEl = document.getElementById('cartList');
+        var wrapEl = document.getElementById('cartWrap');
+        var emptyEl = document.getElementById('cartEmpty');
+        var selAll = document.getElementById('selAll');
+        var toast = document.getElementById('cartToast');
+        var toastTimer;
+
+        function showToast(msg) {
+            toast.textContent = msg; toast.classList.add('show');
+            clearTimeout(toastTimer); toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+        }
+
+        function render() {
+            listEl.innerHTML = CART.map(function (it, i) {
+                return '<div class="cart_item" data-i="' + i + '">' +
+                    '<input type="checkbox" class="ck" ' + (it.checked === false ? '' : 'checked') + '>' +
+                    '<div class="cart_thumb"><img src="' + esc(it.img) + '" alt="' + esc(it.nm) + '"></div>' +
+                    '<div class="cart_body">' +
+                        '<div class="b">' + esc(it.b) + '</div>' +
+                        '<div class="nm">' + esc(it.nm) + '</div>' +
+                        '<div class="op">' + esc(it.op) + '</div>' +
+                        '<div class="qty">' +
+                            '<button type="button" class="minus" ' + (it.qty <= 1 ? 'disabled' : '') + ' aria-label="수량 감소">−</button>' +
+                            '<span class="n">' + it.qty + '</span>' +
+                            '<button type="button" class="plus" aria-label="수량 증가">+</button>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="cart_end">' +
+                        '<div class="price">' + won(it.price * it.qty) + '</div>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+            recalc();
+        }
+
+        function recalc() {
+            var cards = CART.length;
+            wrapEl.style.display = cards ? 'grid' : 'none';
+            emptyEl.style.display = cards ? 'none' : 'block';
+            if (!cards) return;
+
+            var subtotal = 0, allChecked = true, anyChecked = false;
+            CART.forEach(function (it) {
+                if (it.checked === false) { allChecked = false; return; }
+                anyChecked = true;
+                subtotal += it.price * it.qty;
+            });
+            var ship = (subtotal === 0 || subtotal >= FREE_SHIP) ? 0 : SHIP_FEE;
+            var total = subtotal + ship;
+            var point = Math.floor(subtotal * POINT_RATE);
+
+            document.getElementById('sumGoods').textContent = won(subtotal);
+            var shipRow = document.getElementById('sumShipRow'), shipEl = document.getElementById('sumShip');
+            if (ship === 0) { shipEl.textContent = '무료'; shipRow.classList.add('free'); }
+            else { shipEl.textContent = won(ship); shipRow.classList.remove('free'); }
+            document.getElementById('sumTotal').textContent = won(total);
+            document.getElementById('sumPoint').textContent = '적립 예정 ' + point.toLocaleString('en-US') + 'P';
+
+            selAll.checked = allChecked;
+            var go = document.getElementById('orderGo');
+            go.disabled = !anyChecked;
+            go.textContent = anyChecked ? '주문하기' : '상품을 선택해 주세요';
+        }
+
+        // 수량 / 삭제 / 체크
+        listEl.addEventListener('click', function (e) {
+            var item = e.target.closest('.cart_item'); if (!item) return;
+            var i = +item.dataset.i;
+            if (e.target.classList.contains('plus')) { CART[i].qty++; render(); }
+            else if (e.target.classList.contains('minus')) { if (CART[i].qty > 1) { CART[i].qty--; render(); } }
+        });
+        listEl.addEventListener('change', function (e) {
+            if (!e.target.classList.contains('ck')) return;
+            var i = +e.target.closest('.cart_item').dataset.i;
+            CART[i].checked = e.target.checked;
+            recalc();
+        });
+
+        selAll.addEventListener('change', function () {
+            CART.forEach(function (it) { it.checked = selAll.checked; });
+            render();
+        });
+        document.getElementById('delSel').addEventListener('click', function () {
+            var before = CART.length;
+            for (var i = CART.length - 1; i >= 0; i--) { if (CART[i].checked !== false) CART.splice(i, 1); }
+            if (CART.length === before) { showToast('선택된 상품이 없습니다.'); return; }
+            render(); showToast('선택한 상품을 삭제했습니다.');
+        });
+        document.getElementById('orderGo').addEventListener('click', function () {
+            location.href = 'checkout.html';
+        });
+
+        render();
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
+</body>
+</html>

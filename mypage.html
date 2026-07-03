@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 | BEYOND THE SUMMIT</title>
+    <script>
+        /* 로그인 안 되어 있으면 로그인 페이지로 */
+        if (!localStorage.getItem('bts_user')) { location.replace('login.html'); }
+    </script>
+    <link rel="stylesheet" href="mypage.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+        <nav>
+            <ul class="gnb">
+                <li><a href="collection.html">컬렉션</a></li>
+                <li><a href="technology.html">테크놀로지</a></li>
+                <li><a href="expedition.html">익스페디션</a></li>
+                <li><a href="story.html">스토리</a></li>
+                <li><a href="store.html">스토어</a></li>
+            </ul>
+        </nav>
+        <div class="header_util">
+            <a href="#">검색</a>
+            <a href="login.html">로그인</a>
+            <a href="cart.html">장바구니</a>
+        </div>
+    </header>
+
+    <main class="mypage">
+        <div class="mypage_head">
+            <div>
+                <div class="eyebrow">MY PAGE</div>
+                <h2>마이페이지</h2>
+            </div>
+            <button class="mp_logout" type="button" id="logoutBtn">로그아웃</button>
+        </div>
+
+        <div class="mp_sections">
+            <!-- 멤버십 카드 -->
+            <section class="member_card">
+                <div>
+                    <div class="member_greet"><b id="mpUser">회원</b>님, 안녕하세요.</div>
+                    <span class="member_tier">★ SUMMIT MEMBER</span>
+                    <div class="member_prog">
+                        <div class="bar"><span style="width:68%"></span></div>
+                        <div class="txt">다음 등급까지 <b>₩38,000</b> 남았어요</div>
+                    </div>
+                </div>
+                <div class="member_stats">
+                    <a href="#"><div class="num">12,000<span>원</span></div><div class="label">적립금</div></a>
+                    <a href="#"><div class="num">2<span>장</span></div><div class="label">쿠폰</div></a>
+                    <a href="#"><div class="num">1<span>개</span></div><div class="label">작성 리뷰</div></a>
+                </div>
+            </section>
+
+            <!-- 주문 처리 현황 -->
+            <section class="order_status">
+                <h3>주문 처리 현황</h3>
+                <div class="status_steps">
+                    <div class="step"><div class="n zero">0</div><div class="l">입금대기</div></div>
+                    <div class="arw">›</div>
+                    <div class="step"><div class="n">1</div><div class="l">결제완료</div></div>
+                    <div class="arw">›</div>
+                    <div class="step"><div class="n zero">0</div><div class="l">배송준비중</div></div>
+                    <div class="arw">›</div>
+                    <div class="step"><div class="n">1</div><div class="l">배송중</div></div>
+                    <div class="arw">›</div>
+                    <div class="step"><div class="n">3</div><div class="l">배송완료</div></div>
+                </div>
+            </section>
+
+            <!-- 빠른 메뉴 -->
+            <section class="quick_grid">
+                <a href="order-list.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg><span class="ql">주문 내역</span></a>
+                <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 14l-4-4 4-4"/><path d="M5 10h9a5 5 0 0 1 0 10h-2.5"/></svg><span class="ql">취소·반품</span></a>
+                <a href="wishlist.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20s-7-4.5-9-8.5C1.5 8 3.4 5 6.5 5 8.6 5 10 6.4 12 8.6 14 6.4 15.4 5 17.5 5 20.6 5 22.5 8 21 11.5 19 15.5 12 20 12 20z"/></svg><span class="ql">위시리스트</span></a>
+                <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4z"/><path d="M15 6v12"/></svg><span class="ql">쿠폰함</span></a>
+                <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M8.5 9l3.5 5 3.5-5M8.5 12.5h7"/></svg><span class="ql">적립금</span></a>
+                <a href="review-write.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9 6.8 19.2l1-5.9L3.5 9.2l5.9-.8L12 3z"/></svg><span class="ql">나의 리뷰</span></a>
+                <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg><span class="ql">최근 본 상품</span></a>
+                <a href="inquiry.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v11H9l-4 3V5z"/></svg><span class="ql">1:1 문의</span></a>
+            </section>
+
+            <!-- 최근 주문 -->
+            <section class="panel">
+                <div class="panel_head"><h3>최근 주문</h3><a href="order-list.html">전체보기</a></div>
+                <div class="panel_body">
+                    <div class="order">
+                        <div class="order_top"><span>2026.06.28 · 주문번호 20260628-0012</span><span class="badge ship">배송중</span></div>
+                        <div class="order_item">
+                            <div class="order_thumb"><img src="images/product-parka.png" alt="서밋 프로텍트 다운 파카"></div>
+                            <div class="order_info"><div class="nm">서밋 프로텍트 다운 파카</div><div class="op">Black Ice / M</div><div class="pr">489,000원</div></div>
+                            <a class="order_btn" href="order-detail.html?order=20260628-0012">배송조회</a>
+                        </div>
+                    </div>
+                    <div class="order">
+                        <div class="order_top"><span>2026.05.14 · 주문번호 20260514-0088</span><span class="badge done">배송완료</span></div>
+                        <div class="order_item">
+                            <div class="order_thumb"><img src="images/product-fleece.png" alt="그리드 웜 미드레이어"></div>
+                            <div class="order_info"><div class="nm">그리드 웜 미드레이어</div><div class="op">그레이 / L</div><div class="pr">149,000원</div></div>
+                            <a class="order_btn" href="review-write.html">리뷰 작성</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 위시리스트 -->
+            <section class="panel">
+                <div class="panel_head"><h3>위시리스트</h3><a href="wishlist.html">전체보기</a></div>
+                <div class="panel_body">
+                    <div class="wish_grid">
+                        <div class="wish_card">
+                            <div class="wish_visual"><span class="wish_heart">♥</span><img src="images/product-shell-jacket.png" alt="알파 쉴드 3L 재킷"></div>
+                            <div class="b">ALTITUDE</div><div class="nm">알파 쉴드 3L 재킷</div><div class="pr">369,000원</div>
+                        </div>
+                        <div class="wish_card">
+                            <div class="wish_visual"><span class="wish_heart">♥</span><img src="images/product-backpack.png" alt="알파인 루트 백팩 45"></div>
+                            <div class="b">ALTITUDE</div><div class="nm">알파인 루트 백팩 45</div><div class="pr">219,000원</div>
+                        </div>
+                        <div class="wish_card">
+                            <div class="wish_visual"><span class="wish_heart">♥</span><img src="images/product-pants.png" alt="하이크 테크 스트레치 팬츠"></div>
+                            <div class="b">ALTITUDE</div><div class="nm">하이크 테크 스트레치 팬츠</div><div class="pr">128,000원</div>
+                        </div>
+                        <div class="wish_card">
+                            <div class="wish_visual"><span class="wish_heart">♥</span><img src="images/product-gloves.png" alt="써멀 글러브 시스템"></div>
+                            <div class="b">ALTITUDE</div><div class="nm">써멀 글러브 시스템</div><div class="pr">79,000원</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 최근 본 상품 -->
+            <section class="panel">
+                <div class="panel_head"><h3>최근 본 상품</h3></div>
+                <div class="panel_body">
+                    <div class="recent_row">
+                        <div class="r"><div class="th"><img src="images/product-parka.png" alt=""></div><div class="nm">서밋 프로텍트 다운 파카</div></div>
+                        <div class="r"><div class="th"><img src="images/product-fleece.png" alt=""></div><div class="nm">그리드 웜 미드레이어</div></div>
+                        <div class="r"><div class="th"><img src="images/product-pants.png" alt=""></div><div class="nm">하이크 테크 스트레치 팬츠</div></div>
+                        <div class="r"><div class="th"><img src="images/product-backpack.png" alt=""></div><div class="nm">알파인 루트 백팩 45</div></div>
+                        <div class="r"><div class="th"><img src="images/product-shell-jacket.png" alt=""></div><div class="nm">알파 쉴드 3L 재킷</div></div>
+                        <div class="r"><div class="th"><img src="images/product-gloves.png" alt=""></div><div class="nm">써멀 글러브 시스템</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 회원 정보 -->
+            <section class="panel">
+                <div class="panel_head"><h3>회원 정보</h3><a href="edit-profile.html">수정</a></div>
+                <div class="panel_body info_list">
+                    <dl><dt>이메일</dt><dd id="infoEmail">-</dd></dl>
+                    <dl><dt>이름</dt><dd>테스트 사용자</dd></dl>
+                    <dl><dt>휴대폰</dt><dd>010-****-1234</dd></dl>
+                    <dl><dt>가입일</dt><dd>2026.01.02</dd></dl>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        var user = localStorage.getItem('bts_user') || '회원';
+        document.getElementById('mpUser').textContent = user;
+        document.getElementById('infoEmail').textContent = localStorage.getItem('bts_user') || '-';
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            localStorage.removeItem('bts_user');
+            location.href = 'index.html';
+        });
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
+</body>
+</html>

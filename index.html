@@ -4,145 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>animation_연습</title>
-    <style>
-        * {margin: 0; padding: 0;}
-        li {list-style: none;}
-        a {text-decoration: none; color: #000;}
-        img {vertical-align: top;}
-
-        html {scrollbar-gutter: stable;}
-        body {overflow-y: hidden;}
-
-        @font-face {
-            @font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
-    font-weight: 100;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
-    font-weight: 200;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
-    font-weight: 800;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
-    font-weight: 900;
-    font-display: swap;
-}
-        }
-
-        body {font-family: 'Pretendard';}
-
-        .bg_box .bg1 .img2 {width: 100%; height: 100vh; object-fit: cover; position: absolute; left: 0; top: 0;  animation: bgAni 10s forwards;}
-        @keyframes bgAni {0% {height: 180%;} 100% {height: 100%;}}
-
-        .bg_box .bg1 .img1 {position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 4; animation: human 5s forwards;}
-        @keyframes human {0%{height: 80%;} 100%{height: 50%;}}
-
-        header {position: absolute; max-width: 1400px; left: 50%; top: 0; transform: translateX(-50%); display: flex; justify-content: space-between; align-items: center; width: 100%; z-index: 15;}
-        header h1 {width: 100px;}
-        header h1 img {width: 100%;}
-        header nav {}
-        header nav .gnb {display: flex;}
-        header nav .gnb li {font-size: 18px; font-weight: 500; transition: 0.25s;
-        text-shadow: 0 0 30px rgba(0,0,0,1),
-                       0 0 30px rgba(0,0,0,1),
-                        0 0 30px rgba(0,0,0,1),
-                        0 0 30px rgba(0,0,0,1),
-                        0 0 30px rgba(0,0,0,1);}
-        header nav .gnb li a {color: #fff; display: block; padding: 10px 30px;}
-
-        header nav .gnb:hover li {transform: scale(0.9); opacity: 0.7;}
-        header nav .gnb li:hover {transform: scale(1.1); opacity: 1;}
-        header nav .gnb li:hover a {color: rgb(131, 236, 255);}
-        header .header_util {display: flex; align-items: center; gap: 20px;}
-        header .header_util a {color: #fff; font-size: 14px; font-weight: 600; text-shadow: 0 0 24px rgba(0,0,0,0.9); transition: 0.2s;}
-        header .header_util a:hover {color: rgb(131, 236, 255);}
-
-        .textbox {position: absolute; top: 41%; left: 50%; transform: translate(-50%, -50%); z-index: 5; text-align: center; width: 100%;}
-        .textbox ul {}
-        .textbox li {font-size: 0; font-weight: 800; color: #fff; line-height: 0.95; letter-spacing: 0; text-shadow: 0 0 30px rgb(0, 22, 39);}
-        .textbox li.text2 {margin-top: 22px;}
-        .textbox li.text2 span {font-size: 34px; font-weight: 500; color: #fff; line-height: 1.4;}
-        .textbox li span {font-size: 132px; display: inline-block;}
-        .textbox li span.mb50 {margin-right: 42px;}
-        .textbox li.text2 span.mb50 {margin-right: 12px;}
-
-        .snow_box{}
-        .snow_box .snow1 {position: absolute; background: url(images/snow3.png); width: 100%; height: 100vh; left: 0; top: 0; animation: snow1 10s infinite linear; z-index: 10;}
-
-        @keyframes snow1 {0% {background-position: 0 0;} 100% {background-position: 0 900px;}}
-
-        .snow_box .snow2 {position: absolute; background: url(images/snow2.png); width: 100%; height: 100vh;left: 0; top: 0; animation: snow2 15s infinite linear; background-size: 50%;}
-
-        @keyframes snow2 {0% {background-position: 0 0;} 100% {background-position: 400px 900px;}}
-
-    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="wrap">
+    <div class="wrap" id="sec-hero">
         <header>
             <h1><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
             <nav>
                 <ul class="gnb">
                     <li><a href="collection.html">컬렉션</a></li>
-                    <li><a href="#">테크놀로지</a></li>
-                    <li><a href="#">익스페디션</a></li>
-                    <li><a href="#">스토리</a></li>
-                    <li><a href="#">스토어</a></li>
+                    <li><a href="technology.html">테크놀로지</a></li>
+                    <li><a href="expedition.html">익스페디션</a></li>
+                    <li><a href="story.html">스토리</a></li>
+                    <li><a href="store.html">스토어</a></li>
                 </ul>
             </nav>
             <div class="header_util">
                 <a href="#">검색</a>
-                <a href="#">로그인</a>
-                <a href="#">장바구니</a>
+                <a href="login.html">로그인</a>
+                <a href="cart.html">장바구니</a>
             </div>
         </header>
 
@@ -166,16 +48,7 @@
                     <span>T</span>
                 </li>
                 <li class="text2">
-                    <span>한</span>
-                    <span>계</span>
-                    <span>를</span>
-                    <span class="mb50">넘어,</span>
-                    <span>가</span>
-                    <span>장</span>
-                    <span class="mb50">차가운</span>
-                    <span>곳</span>
-                    <span>까</span>
-                    <span>지.</span>
+                    <span>한계를 넘어, 가장 차가운 곳까지.</span>
                 </li>
             </ul>
         </div>
@@ -193,6 +66,158 @@
         </div>
     </div>
     
+    <section class="home_products" id="sec-products">
+        <div class="hp_inner">
+            <div class="sec_head">
+                <div>
+                    <div class="eyebrow">SHOP</div>
+                    <h2>신상품 · 베스트</h2>
+                </div>
+                <a class="more" href="store.html">전체 보기 →</a>
+            </div>
+            <div class="hp_grid">
+                <a class="p_card" href="product-parka.html">
+                    <div class="p_visual"><span class="p_badge">NEW</span><img src="images/product-parka.png" alt="서밋 프로텍트 다운 파카"></div>
+                    <div class="p_info"><div class="brand">ALTITUDE</div><h3>서밋 프로텍트 다운 파카</h3><div class="price">489,000원</div></div>
+                </a>
+                <a class="p_card" href="store.html">
+                    <div class="p_visual"><img src="images/product-shell-jacket.png" alt="알파 쉴드 3L 재킷"></div>
+                    <div class="p_info"><div class="brand">ALTITUDE</div><h3>알파 쉴드 3L 재킷</h3><div class="price">369,000원</div></div>
+                </a>
+                <a class="p_card" href="store.html">
+                    <div class="p_visual"><span class="p_badge accent">BEST</span><img src="images/product-fleece.png" alt="그리드 웜 미드레이어"></div>
+                    <div class="p_info"><div class="brand">ALTITUDE</div><h3>그리드 웜 미드레이어</h3><div class="price">149,000원</div></div>
+                </a>
+                <a class="p_card" href="store.html">
+                    <div class="p_visual"><img src="images/product-backpack.png" alt="알파인 루트 백팩 45"></div>
+                    <div class="p_info"><div class="brand">ALTITUDE</div><h3>알파인 루트 백팩 45</h3><div class="price">219,000원</div></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="home_lines" id="sec-lines">
+        <div class="hl_inner">
+            <div class="sec_head">
+                <div>
+                    <div class="eyebrow">COLLECTION LINES</div>
+                    <h2>무엇을 위해 입는가</h2>
+                </div>
+                <a class="more" href="collection.html">컬렉션 보기 →</a>
+            </div>
+            <div class="hl_grid">
+                <div class="hline">
+                    <img src="images/collections/expedition.png" alt="익스페디션 라인">
+                    <div class="hline_body">
+                        <div class="eyebrow">EXPEDITION</div>
+                        <h3>익스페디션 라인</h3>
+                        <p>극지·고산 원정을 기준으로 설계한 최상위 라인.<br>가장 혹독한 환경에서 체온을 지킵니다.</p>
+                        <a class="hline_link" href="store.html">스토어에서 보기 →</a>
+                    </div>
+                </div>
+                <div class="hline">
+                    <img src="images/collections/insulation.png" alt="인슐레이션 라인">
+                    <div class="hline_body">
+                        <div class="eyebrow">INSULATION</div>
+                        <h3>인슐레이션 라인</h3>
+                        <p>900 필파워 다운과 열반사 라이닝으로<br>적은 무게에 최대 보온을 담았습니다.</p>
+                        <a class="hline_link" href="store.html">스토어에서 보기 →</a>
+                    </div>
+                </div>
+                <div class="hline">
+                    <img src="images/collections/shell.png" alt="셸 & 프로텍션 라인">
+                    <div class="hline_body">
+                        <div class="eyebrow">SHELL &amp; PROTECTION</div>
+                        <h3>셸 &amp; 프로텍션</h3>
+                        <p>방풍·방수·투습을 한 겹에 담은 3레이어 셸로 비바람을 막아냅니다.</p>
+                        <a class="hline_link" href="store.html">스토어에서 보기 →</a>
+                    </div>
+                </div>
+                <div class="hline">
+                    <img src="images/collections/daily.png" alt="데일리 웜 라인">
+                    <div class="hline_body">
+                        <div class="eyebrow">DAILY WARMTH</div>
+                        <h3>데일리 웜</h3>
+                        <p>도심의 겨울을 위한 가볍고 편안한 보온.<br>어디서든 자연스럽게 어울립니다.</p>
+                        <a class="hline_link" href="store.html">스토어에서 보기 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home_feature" id="sec-feature">
+        <div class="hf_inner">
+            <div class="eyebrow">OUR STORY</div>
+            <h2>정상은 끝이 아니라, 통과점입니다</h2>
+            <p>1998년, 산을 사랑한 사람들이 직접 입기 위해 만든 옷.<br>BEYOND THE SUMMIT의 여정을 확인해 보세요.</p>
+            <a class="hf_cta" href="story.html">브랜드 이야기 보기 →</a>
+        </div>
+    </section>
+
+    <section class="home_support" id="sec-support">
+        <div class="hs_inner">
+            <div class="hs_head">
+                <div class="eyebrow">SUPPORT</div>
+                <h2>무엇을 도와드릴까요?</h2>
+            </div>
+            <div class="hs_grid">
+                <a class="hs_card" href="faq.html">
+                    <div class="hs_ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3V5z"/><path d="M9 10h6M9 13h4"/></svg></div>
+                    <h3>고객센터 · FAQ</h3>
+                    <p>배송·교환·반품부터 회원·상품까지,<br>자주 묻는 질문을 빠르게 확인하세요.</p>
+                    <span class="hs_more">자세히 보기 →</span>
+                </a>
+                <a class="hs_card" href="size-guide.html">
+                    <div class="hs_ic"><svg viewBox="0 0 24 24"><path d="M3 8h18v8H3z"/><path d="M7 8v3M11 8v4M15 8v3M19 8v4"/></svg></div>
+                    <h3>사이즈 가이드</h3>
+                    <p>아우터·상의·하의 카테고리별<br>실측 치수와 측정 방법을 안내합니다.</p>
+                    <span class="hs_more">사이즈 확인 →</span>
+                </a>
+                <a class="hs_card" href="store-locator.html">
+                    <div class="hs_ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+                    <h3>매장 찾기</h3>
+                    <p>전국 오프라인 매장에서 직접 착용하고<br>전문 스태프의 상담을 받아보세요.</p>
+                    <span class="hs_more">매장 보기 →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <nav class="side_nav on_dark" id="sideNav" aria-label="섹션 이동">
+        <button class="sn_item active" type="button" data-target="sec-hero" data-dark="1"><span class="sn_label">홈</span><span class="dot"></span></button>
+        <button class="sn_item" type="button" data-target="sec-products" data-dark="0"><span class="sn_label">신상품</span><span class="dot"></span></button>
+        <button class="sn_item" type="button" data-target="sec-lines" data-dark="1"><span class="sn_label">컬렉션</span><span class="dot"></span></button>
+        <button class="sn_item" type="button" data-target="sec-feature" data-dark="1"><span class="sn_label">브랜드</span><span class="dot"></span></button>
+        <button class="sn_item" type="button" data-target="sec-support" data-dark="0"><span class="sn_label">고객지원</span><span class="dot"></span></button>
+    </nav>
+
+    <script>
+        (function () {
+            var nav = document.getElementById('sideNav');
+            var items = [].slice.call(nav.querySelectorAll('.sn_item'));
+            var sections = items.map(function (b) { return document.getElementById(b.dataset.target); });
+            items.forEach(function (b) {
+                b.addEventListener('click', function () {
+                    var el = document.getElementById(b.dataset.target);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+            function onScroll() {
+                var y = window.scrollY + window.innerHeight * 0.4;
+                var idx = 0;
+                for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+                items.forEach(function (b, i) { b.classList.toggle('active', i === idx); });
+                nav.classList.toggle('on_dark', items[idx].dataset.dark === '1');
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+            onScroll();
+        })();
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
 </body>
 </html>
 

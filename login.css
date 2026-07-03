@@ -1,0 +1,129 @@
+
+        :root {
+            --fs-display: 48px;
+            --fs-h1: 40px;
+            --fs-h2: 32px;
+            --fs-h3: 24px;
+            --fs-h4: 20px;
+            --fs-lg: 18px;
+            --fs-md: 16px;
+            --fs-base: 15px;
+            --fs-sm: 14px;
+            --fs-xs: 13px;
+            --fs-2xs: 12px;
+        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        a {text-decoration: none; color: inherit;}
+        button, input {font: inherit;}
+        img {vertical-align: top;}
+
+        @font-face {
+            font-family: 'A2z';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'A2z';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2');
+            font-weight: 600;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'A2z';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2');
+            font-weight: 800;
+            font-display: swap;
+        }
+
+        @font-face {font-family: 'A2z'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight: 700; font-display: swap;}
+        html {scrollbar-gutter: stable;}
+        body {word-break: keep-all; overflow-wrap: break-word;}
+        body {font-family: 'A2z', sans-serif; color: #111820; background: #fff;}
+
+        .auth {display: grid; grid-template-columns: 1.05fr 1fr; min-height: 100vh;}
+
+        /* ===== 좌측 브랜드 비주얼 ===== */
+        .auth_visual {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(9,17,24,0.5), rgba(9,17,24,0.82)), url('images/bg2.png') center 40% / cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 48px 40px;
+        }
+        .auth_visual .v_logo {width: 118px;}
+        .auth_visual .v_logo img {width: 100%; filter: invert(1) brightness(2.4) contrast(1.1);}
+        .auth_visual .v_tag .eyebrow {color: #83ecff; font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.12em; margin-bottom: 16px;}
+        .auth_visual .v_tag h2 {font-size: var(--fs-h1); font-weight: 700; line-height: 1.18; letter-spacing: -0.01em;}
+        .auth_visual .v_tag p {margin-top: 16px; white-space: nowrap; color: rgba(255,255,255,0.74); font-size: var(--fs-md); line-height: 1.75;}
+
+        /* ===== 우측 폼 ===== */
+        .auth_form_wrap {display: flex; align-items: center; justify-content: center; padding: 56px 40px;}
+        .auth_form {width: 100%; max-width: 400px;}
+        .auth_form .m_logo {display: none; width: 100px; margin: 0 auto 28px;}
+        .auth_form .m_logo img {width: 100%;}
+        .auth_form h1 {font-size: var(--fs-h2); font-weight: 700; margin-bottom: 8px;}
+        .auth_form .sub {color: #6b7884; font-size: var(--fs-base); margin-bottom: 20px;}
+        .test_hint {display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 26px; padding: 10px 12px 10px 14px; background: #f1f7f9; border: 1px solid #d8e6ec; border-radius: 4px; font-size: var(--fs-xs); color: #4b5965; line-height: 1.5;}
+        .test_hint b {color: #111820;}
+        .test_hint button {flex: 0 0 auto; height: 34px; padding: 0 14px; border: 1px solid #111820; border-radius: 3px; background: #111820; color: #fff; font-size: var(--fs-xs); font-weight: 700; white-space: nowrap; cursor: pointer; transition: 0.15s;}
+        .test_hint button:hover {background: #26333f;}
+
+        .field {margin-bottom: 16px;}
+        .field label {display: block; margin-bottom: 8px; font-size: var(--fs-xs); font-weight: 600; color: #36434f;}
+        .field input {width: 100%; height: 50px; border: 1px solid #d6dde3; border-radius: 3px; padding: 0 14px; font-size: var(--fs-base); color: #111820; background: #fff; transition: 0.15s;}
+        .field input::placeholder {color: #aab4bc;}
+        .field input:focus {outline: none; border-color: #111820;}
+
+        .auth_row {display: flex; align-items: center; justify-content: space-between; margin: 6px 0 22px;}
+        .auth_row .check {display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-sm); color: #4b5965; cursor: pointer;}
+        .auth_row .check input {width: 16px; height: 16px; accent-color: #111820; cursor: pointer;}
+        .auth_row a {font-size: var(--fs-sm); color: #6b7884; text-decoration: underline; text-underline-offset: 3px;}
+        .auth_row a:hover {color: #111820;}
+
+        .auth_submit {width: 100%; height: 54px; border: none; border-radius: 3px; color: #fff; font-size: var(--fs-md); font-weight: 700; cursor: pointer; background-color: #111820; background-image: linear-gradient(#26333f, #26333f); background-repeat: no-repeat; background-size: 0% 100%; transition: background-size 0.4s ease;}
+        .auth_submit:hover {background-size: 100% 100%;}
+
+        .auth_msg {margin-top: 14px; font-size: var(--fs-sm); font-weight: 600; min-height: 20px;}
+        .auth_msg.err {color: #d94a3d;}
+        .auth_msg.ok {color: #1789c4;}
+
+        .auth_divider {display: flex; align-items: center; gap: 14px; margin: 24px 0; color: #aab4bc; font-size: var(--fs-xs); font-weight: 600;}
+        .auth_divider::before, .auth_divider::after {content: ''; flex: 1; height: 1px; background: #e5eaee;}
+
+        .social {display: grid; gap: 10px;}
+        .social button {height: 50px; border: none; border-radius: 3px; font-size: var(--fs-base); font-weight: 600; cursor: pointer; transition: 0.15s;}
+        .social .kakao {background: #FEE500; color: #191600;}
+        .social .kakao:hover {background: #f2d900;}
+        .social .naver {background: #03C75A; color: #fff;}
+        .social .naver:hover {background: #02b350;}
+
+        .auth_signup {margin-top: 28px; text-align: center; font-size: var(--fs-sm); color: #6b7884;}
+        .auth_signup a {color: #111820; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;}
+
+        .auth_note {margin-top: 18px; text-align: center; font-size: var(--fs-2xs); color: #aab4bc;}
+        .auth_back {display: inline-block; margin-top: 10px; text-align: center; width: 100%; font-size: var(--fs-2xs); color: #aab4bc;}
+        .auth_back a {text-decoration: underline; text-underline-offset: 2px;}
+
+        @media (max-width: 960px) {
+            .auth {grid-template-columns: 1fr;}
+            .auth_visual {display: none;}
+            .auth_form .m_logo {display: block;}
+            .auth_form_wrap {padding: 48px 24px;}
+        }
+            /* ===== 모바일 타입 스케일 다운 ===== */
+        @media (max-width: 720px) {
+            :root {
+                --fs-display: 34px; --fs-h1: 30px; --fs-h2: 26px; --fs-h3: 20px; --fs-h4: 18px; --fs-lg: 17px;
+            }
+        }
+            /* 모바일: 데스크톱 메뉴 숨김(햄버거로 대체, FOUC 방지) */
+        @media (max-width: 860px) {
+            header {box-sizing: border-box; padding: 12px 20px;}
+            header nav .gnb {display: none !important;}
+            header .header_util {display: none !important;}
+        }
+    

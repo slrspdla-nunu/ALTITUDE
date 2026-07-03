@@ -1,0 +1,99 @@
+
+        :root {
+            --gutter: 36px; --section-y: 88px; --hero-pt: 132px; --page-pt: 140px;
+            --fs-display: 48px; --fs-h1: 40px; --fs-h2: 32px; --fs-h3: 24px; --fs-h4: 20px;
+            --fs-lg: 18px; --fs-md: 16px; --fs-base: 15px; --fs-sm: 14px; --fs-xs: 13px; --fs-2xs: 12px;
+        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        li {list-style: none;}
+        a {text-decoration: none; color: inherit;}
+        button, input {font: inherit;}
+        img {vertical-align: top;}
+        @font-face {font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2'); font-weight:400; font-display:swap;}
+        @font-face {font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2'); font-weight:600; font-display:swap;}
+        @font-face {font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2'); font-weight:800; font-display:swap;}
+        @font-face {font-family: 'A2z'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight: 700; font-display: swap;}
+        html {scrollbar-gutter: stable;}
+        body {word-break: keep-all; overflow-wrap: break-word;}
+        body {font-family:'A2z', sans-serif; color:#111820; background:#fff;}
+
+        header {position: absolute; max-width: 1400px; left: 50%; top: 0; transform: translateX(-50%); display: flex; justify-content: space-between; align-items: center; width: 100%; z-index: 15;}
+        header h1 {width: 100px;}
+        header h1 img {width: 100%;}
+        header nav .gnb {display: flex;}
+        header nav .gnb li {font-size: var(--fs-lg); font-weight: 600; transition: 0.25s;}
+        header nav .gnb li a {color: #111820; display: block; padding: 10px 30px;}
+        header nav .gnb:hover li {transform: scale(0.9); opacity: 0.7;}
+        header nav .gnb li:hover {transform: scale(1.1); opacity: 1;}
+        header nav .gnb li:hover a {color: #1789c4;}
+        header .header_util {display: flex; align-items: center; gap: 20px;}
+        header .header_util a {color: #36434f; font-size: var(--fs-sm); font-weight: 600; transition: 0.2s;}
+        header .header_util a:hover {color: #1789c4;}
+        header a:focus, header a:focus-visible {outline: none;}
+
+        .acct {max-width: 1240px; margin: 0 auto; padding: var(--page-pt) var(--gutter) 90px;}
+        .crumb {margin-bottom: 22px; color: #8a98a5; font-size: var(--fs-xs); font-weight: 600;}
+        .crumb span {margin: 0 7px; color: #c4ccd2;}
+        .crumb strong {color: #36434f; font-weight: 600;}
+        .acct_head {padding-bottom: 22px; margin-bottom: 24px; border-bottom: 1px solid #e5eaee;}
+        .acct_head .eyebrow {color: #1789c4; font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 10px;}
+        .acct_head h2 {font-size: var(--fs-h2); font-weight: 700;}
+        .acct_head p {margin-top: 12px; font-size: var(--fs-sm); color: #6b7884; line-height: 1.6;}
+
+        /* 검색 */
+        .faq_search {position: relative; margin-bottom: 22px;}
+        .faq_search input {width: 100%; height: 52px; border: 1px solid #d6dde3; border-radius: 4px; padding: 0 16px 0 46px; font-size: var(--fs-base); color: #111820;}
+        .faq_search input:focus {outline: none; border-color: #111820;}
+        .faq_search svg {position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; stroke: #97a3ad; fill: none; stroke-width: 2;}
+
+        /* 카테고리 탭 */
+        .faq_tabs {display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;}
+        .faq_tabs button {height: 38px; padding: 0 16px; border: 1px solid #d6dde3; border-radius: 999px; background: #fff; font-size: var(--fs-sm); font-weight: 600; color: #4b5965; cursor: pointer; transition: 0.15s;}
+        .faq_tabs button:hover {border-color: #111820; color: #111820;}
+        .faq_tabs button.active {background: #111820; border-color: #111820; color: #fff;}
+
+        /* 아코디언 */
+        .qlist {border-top: 2px solid #111820;}
+        .qitem {border-bottom: 1px solid #e5eaee;}
+        .qhead {display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: none; border: none; padding: 20px 4px; cursor: pointer;}
+        .qhead .qmark {flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; background: #eef2f4; color: #1789c4; font-size: var(--fs-sm); font-weight: 700; display: flex; align-items: center; justify-content: center;}
+        .qhead .cat {flex: 0 0 auto; font-size: var(--fs-2xs); font-weight: 700; color: #97a3ad; min-width: 62px;}
+        .qhead .qt {flex: 1; font-size: var(--fs-base); font-weight: 600; color: #1a242e;}
+        .qhead .chev {flex: 0 0 auto; color: #b7c0c8; transition: 0.2s;}
+        .qitem.open .qhead .chev {transform: rotate(180deg);}
+        .qbody {display: none; padding: 0 4px 22px 42px;}
+        .qitem.open .qbody {display: block;}
+        .qbody .a {padding: 16px 18px; background: #f6f8f9; border-radius: 4px; font-size: var(--fs-sm); line-height: 1.75; color: #36434f;}
+        .faq_empty {padding: 50px 0; text-align: center; color: #aab4bc; font-size: var(--fs-base);}
+
+        /* 문의 배너 */
+        .cs_banner {margin-top: 40px; padding: 28px 30px; border-radius: 8px; background: #111820; color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;}
+        .cs_banner .t {font-size: var(--fs-h4); font-weight: 700;}
+        .cs_banner .d {margin-top: 6px; font-size: var(--fs-sm); color: rgba(255,255,255,0.65); line-height: 1.6;}
+        .cs_banner a {flex: 0 0 auto; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 3px; font-size: var(--fs-sm); font-weight: 700; color: #111820; background-color: #fff; background-image: linear-gradient(#83ecff,#83ecff); background-repeat: no-repeat; background-size: 0% 100%; transition: background-size 0.4s ease;}
+        .cs_banner a:hover {background-size: 100% 100%;}
+
+        @media (max-width: 860px) {
+            header {padding: 0 20px;}
+            header h1 {width: 78px;}
+            header nav .gnb {overflow-x: auto;}
+            header nav .gnb li {font-size: var(--fs-sm);}
+            header nav .gnb li a {padding: 10px 12px;}
+            header .header_util {display: none;}
+            .acct {padding: 100px 20px 64px;}
+            .qhead .cat {display: none;}
+            .cs_banner {flex-direction: column; align-items: flex-start;}
+        }
+            /* ===== 모바일 타입 스케일 다운 ===== */
+        @media (max-width: 720px) {
+            :root {
+                --fs-display: 34px; --fs-h1: 30px; --fs-h2: 26px; --fs-h3: 20px; --fs-h4: 18px; --fs-lg: 17px;
+            }
+        }
+            /* 모바일: 데스크톱 메뉴 숨김(햄버거로 대체, FOUC 방지) */
+        @media (max-width: 860px) {
+            header {box-sizing: border-box; padding: 12px 20px;}
+            header nav .gnb {display: none !important;}
+            header .header_util {display: none !important;}
+        }
+    

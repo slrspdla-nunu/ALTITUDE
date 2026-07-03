@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매장 찾기 | BEYOND THE SUMMIT</title>
+    <link rel="stylesheet" href="store-locator.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+        <nav>
+            <ul class="gnb">
+                <li><a href="collection.html">컬렉션</a></li>
+                <li><a href="technology.html">테크놀로지</a></li>
+                <li><a href="expedition.html">익스페디션</a></li>
+                <li><a href="story.html">스토리</a></li>
+                <li><a href="store.html">스토어</a></li>
+            </ul>
+        </nav>
+        <div class="header_util">
+            <a href="#">검색</a>
+            <a href="login.html">로그인</a>
+            <a href="cart.html">장바구니</a>
+        </div>
+    </header>
+
+    <main class="acct">
+        <div class="crumb"><a href="index.html">홈</a><span>›</span><strong>매장 찾기</strong></div>
+        <div class="acct_head">
+            <div class="eyebrow">STORES</div>
+            <h2>매장 찾기</h2>
+            <p>전국 오프라인 매장에서 제품을 직접 착용하고 전문 스태프의 상담을 받아보세요.</p>
+        </div>
+
+        <div class="map_ph">
+            <div class="grid_bg"></div>
+            <div class="pin">
+                <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                <span>지도 영역 (연동 예정)</span>
+            </div>
+        </div>
+
+        <div class="loc_tabs" id="locTabs">
+            <button type="button" data-rg="all" class="active">전체</button>
+            <button type="button" data-rg="서울">서울</button>
+            <button type="button" data-rg="경기·인천">경기·인천</button>
+            <button type="button" data-rg="부산·경남">부산·경남</button>
+            <button type="button" data-rg="대구·경북">대구·경북</button>
+            <button type="button" data-rg="강원">강원</button>
+        </div>
+
+        <div class="loc_count">총 <b id="locCount">0</b>개 매장</div>
+        <div class="loc_grid" id="locGrid"></div>
+    </main>
+
+    <script>
+        var STORES = [
+            { rg: '서울', name: '플래그십 종로', addr: '서울특별시 종로구 세종대로 000 1F', tel: '02-000-1001', hour: '매일 11:00–20:00' },
+            { rg: '서울', name: '더현대 서울', addr: '서울특별시 영등포구 여의대로 108 2F', tel: '02-000-1002', hour: '평일 10:30–20:00 / 주말 10:30–20:30' },
+            { rg: '경기·인천', name: '스타필드 하남', addr: '경기도 하남시 미사대로 750 1F', tel: '031-000-2001', hour: '매일 10:30–22:00' },
+            { rg: '부산·경남', name: '롯데 부산본점', addr: '부산광역시 부산진구 가야대로 772 3F', tel: '051-000-3001', hour: '매일 10:30–20:00' },
+            { rg: '대구·경북', name: '대구 동성로', addr: '대구광역시 중구 동성로 000 1F', tel: '053-000-4001', hour: '매일 11:00–21:00' },
+            { rg: '강원', name: '속초 아울렛', addr: '강원특별자치도 속초시 관광로 000', tel: '033-000-5001', hour: '매일 10:00–21:00' }
+        ];
+
+        function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+        var grid = document.getElementById('locGrid');
+        var countEl = document.getElementById('locCount');
+        var curRg = 'all';
+
+        function render() {
+            var items = STORES.filter(function (s) { return curRg === 'all' || s.rg === curRg; });
+            countEl.textContent = items.length;
+            grid.innerHTML = items.map(function (s) {
+                return '<div class="loc_card">' +
+                    '<span class="rg">' + esc(s.rg) + '</span>' +
+                    '<h3>' + esc(s.name) + '</h3>' +
+                    '<dl><dt>주소</dt><dd>' + esc(s.addr) + '</dd></dl>' +
+                    '<dl><dt>전화</dt><dd>' + esc(s.tel) + '</dd></dl>' +
+                    '<dl><dt>영업</dt><dd>' + esc(s.hour) + '</dd></dl>' +
+                    '<a class="loc_map" href="#">지도 보기 →</a>' +
+                    '</div>';
+            }).join('');
+        }
+
+        document.getElementById('locTabs').addEventListener('click', function (e) {
+            var btn = e.target.closest('button');
+            if (!btn) return;
+            this.querySelectorAll('button').forEach(function (b) { b.classList.toggle('active', b === btn); });
+            curRg = btn.dataset.rg;
+            render();
+        });
+        render();
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
+</body>
+</html>

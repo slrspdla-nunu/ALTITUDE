@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 | BEYOND THE SUMMIT</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="auth">
+        <!-- 좌측 브랜드 비주얼 -->
+        <section class="auth_visual">
+            <h1 class="v_logo"><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+            <div class="v_tag">
+                <div class="eyebrow">BEYOND THE SUMMIT</div>
+                <h2>한계를 넘어,<br>가장 차가운 곳까지.</h2>
+                <p>멤버 전용 신제품 소식과 우선 구매 혜택을 먼저 전해드립니다.</p>
+            </div>
+        </section>
+
+        <!-- 우측 로그인 폼 -->
+        <section class="auth_form_wrap">
+            <div class="auth_form">
+                <a class="m_logo" href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a>
+                <h1>로그인</h1>
+                <p class="sub">계정에 로그인하고 멤버 혜택을 누리세요.</p>
+                <div class="test_hint">
+                    <span>테스트 계정 · <b>test@gmail.com</b> / <b>test1234</b></span>
+                    <button type="button" id="quickLogin">바로 로그인</button>
+                </div>
+
+                <form id="loginForm" novalidate>
+                    <div class="field">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="username">
+                    </div>
+                    <div class="field">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" autocomplete="current-password">
+                    </div>
+                    <div class="auth_row">
+                        <label class="check"><input type="checkbox" name="keep"> 로그인 상태 유지</label>
+                        <a href="#">비밀번호 찾기</a>
+                    </div>
+                    <button class="auth_submit" type="submit">로그인</button>
+                    <div class="auth_msg" id="authMsg" role="status" aria-live="polite"></div>
+                </form>
+
+                <div class="auth_divider">또는</div>
+
+                <div class="social">
+                    <button class="kakao" type="button">카카오로 시작하기</button>
+                    <button class="naver" type="button">네이버로 시작하기</button>
+                </div>
+
+                <div class="auth_signup">아직 회원이 아니신가요? <a href="signup.html">회원가입</a></div>
+                <p class="auth_note">데모 사이트로 실제 로그인은 동작하지 않습니다.</p>
+                <span class="auth_back"><a href="index.html">← 홈으로 돌아가기</a></span>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        var form = document.getElementById('loginForm');
+        var msg = document.getElementById('authMsg');
+        var TEST_EMAIL = 'test@gmail.com';
+        var TEST_PW = 'test1234';
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var email = document.getElementById('email').value.trim();
+            var pw = document.getElementById('password').value;
+            if (!email || !pw) {
+                msg.className = 'auth_msg err';
+                msg.textContent = '이메일과 비밀번호를 입력해 주세요.';
+                return;
+            }
+            if (email === TEST_EMAIL && pw === TEST_PW) {
+                localStorage.setItem('bts_user', email);
+                msg.className = 'auth_msg ok';
+                msg.textContent = '로그인되었습니다. 마이페이지로 이동합니다.';
+                setTimeout(function () { location.href = 'mypage.html'; }, 600);
+            } else {
+                msg.className = 'auth_msg err';
+                msg.textContent = '이메일 또는 비밀번호가 올바르지 않습니다.';
+            }
+        });
+        document.getElementById('quickLogin').addEventListener('click', function () {
+            localStorage.setItem('bts_user', TEST_EMAIL);
+            location.href = 'mypage.html';
+        });
+        document.querySelectorAll('.social button').forEach(function (b) {
+            b.addEventListener('click', function () {
+                msg.className = 'auth_msg ok';
+                msg.textContent = b.textContent + ' — 데모 사이트입니다.';
+            });
+        });
+    </script>
+</body>
+</html>

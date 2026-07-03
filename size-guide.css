@@ -1,0 +1,95 @@
+
+        :root {
+            --gutter: 36px; --section-y: 88px; --hero-pt: 132px; --page-pt: 140px;
+            --fs-display: 48px; --fs-h1: 40px; --fs-h2: 32px; --fs-h3: 24px; --fs-h4: 20px;
+            --fs-lg: 18px; --fs-md: 16px; --fs-base: 15px; --fs-sm: 14px; --fs-xs: 13px; --fs-2xs: 12px;
+        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        li {list-style: none;}
+        a {text-decoration: none; color: inherit;}
+        button {font: inherit;}
+        img {vertical-align: top;}
+        @font-face {font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2'); font-weight:400; font-display:swap;}
+        @font-face {font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2'); font-weight:600; font-display:swap;}
+        @font-face {font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2'); font-weight:800; font-display:swap;}
+        @font-face {font-family: 'A2z'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight: 700; font-display: swap;}
+        html {scrollbar-gutter: stable;}
+        body {word-break: keep-all; overflow-wrap: break-word;}
+        body {font-family:'A2z', sans-serif; color:#111820; background:#fff;}
+
+        header {position: absolute; max-width: 1400px; left: 50%; top: 0; transform: translateX(-50%); display: flex; justify-content: space-between; align-items: center; width: 100%; z-index: 15;}
+        header h1 {width: 100px;}
+        header h1 img {width: 100%;}
+        header nav .gnb {display: flex;}
+        header nav .gnb li {font-size: var(--fs-lg); font-weight: 600; transition: 0.25s;}
+        header nav .gnb li a {color: #111820; display: block; padding: 10px 30px;}
+        header nav .gnb:hover li {transform: scale(0.9); opacity: 0.7;}
+        header nav .gnb li:hover {transform: scale(1.1); opacity: 1;}
+        header nav .gnb li:hover a {color: #1789c4;}
+        header .header_util {display: flex; align-items: center; gap: 20px;}
+        header .header_util a {color: #36434f; font-size: var(--fs-sm); font-weight: 600; transition: 0.2s;}
+        header .header_util a:hover {color: #1789c4;}
+        header a:focus, header a:focus-visible {outline: none;}
+
+        .acct {max-width: 1240px; margin: 0 auto; padding: var(--page-pt) var(--gutter) 90px;}
+        .crumb {margin-bottom: 22px; color: #8a98a5; font-size: var(--fs-xs); font-weight: 600;}
+        .crumb span {margin: 0 7px; color: #c4ccd2;}
+        .crumb strong {color: #36434f; font-weight: 600;}
+        .acct_head {padding-bottom: 22px; margin-bottom: 24px; border-bottom: 1px solid #e5eaee;}
+        .acct_head .eyebrow {color: #1789c4; font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 10px;}
+        .acct_head h2 {font-size: var(--fs-h2); font-weight: 700;}
+        .acct_head p {margin-top: 12px; font-size: var(--fs-sm); color: #6b7884; line-height: 1.6;}
+
+        .sg_tabs {display: flex; gap: 8px; margin-bottom: 22px;}
+        .sg_tabs button {height: 40px; padding: 0 18px; border: 1px solid #d6dde3; border-radius: 999px; background: #fff; font-size: var(--fs-sm); font-weight: 600; color: #4b5965; cursor: pointer; transition: 0.15s;}
+        .sg_tabs button:hover {border-color: #111820; color: #111820;}
+        .sg_tabs button.active {background: #111820; border-color: #111820; color: #fff;}
+
+        .sg_panel {display: none;}
+        .sg_panel.active {display: block;}
+        .sg_cap {display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;}
+        .sg_cap h3 {font-size: var(--fs-h4); font-weight: 700;}
+        .sg_cap .unit {font-size: var(--fs-xs); color: #97a3ad; font-weight: 600;}
+
+        .sg_table {width: 100%; border-collapse: collapse; font-size: var(--fs-sm);}
+        .sg_table th, .sg_table td {padding: 14px 10px; text-align: center; border-bottom: 1px solid #eef2f4;}
+        .sg_table thead th {background: #111820; color: #fff; font-weight: 700; border-bottom: none;}
+        .sg_table thead th:first-child {border-top-left-radius: 4px;}
+        .sg_table thead th:last-child {border-top-right-radius: 4px;}
+        .sg_table tbody th {background: #f6f8f9; font-weight: 700; color: #1a242e;}
+        .sg_table tbody tr:hover td {background: #fafbfc;}
+        .sg_table td {color: #36434f; font-weight: 600;}
+
+        .sg_how {margin-top: 40px; padding-top: 30px; border-top: 1px solid #e5eaee;}
+        .sg_how h3 {font-size: var(--fs-h4); font-weight: 700; margin-bottom: 16px;}
+        .sg_how .grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;}
+        .sg_how .item {padding: 18px 20px; border: 1px solid #e5eaee; border-radius: 6px;}
+        .sg_how .item b {display: block; font-size: var(--fs-sm); font-weight: 700; color: #1789c4; margin-bottom: 6px;}
+        .sg_how .item p {font-size: var(--fs-sm); color: #55636e; line-height: 1.7;}
+        .sg_note {margin-top: 18px; font-size: var(--fs-xs); color: #97a3ad; line-height: 1.7;}
+
+        @media (max-width: 860px) {
+            header {padding: 0 20px;}
+            header h1 {width: 78px;}
+            header nav .gnb {overflow-x: auto;}
+            header nav .gnb li {font-size: var(--fs-sm);}
+            header nav .gnb li a {padding: 10px 12px;}
+            header .header_util {display: none;}
+            .acct {padding: 100px 20px 64px;}
+            .sg_table {font-size: var(--fs-xs);}
+            .sg_table th, .sg_table td {padding: 11px 6px;}
+            .sg_how .grid {grid-template-columns: 1fr;}
+        }
+            /* ===== 모바일 타입 스케일 다운 ===== */
+        @media (max-width: 720px) {
+            :root {
+                --fs-display: 34px; --fs-h1: 30px; --fs-h2: 26px; --fs-h3: 20px; --fs-h4: 18px; --fs-lg: 17px;
+            }
+        }
+            /* 모바일: 데스크톱 메뉴 숨김(햄버거로 대체, FOUC 방지) */
+        @media (max-width: 860px) {
+            header {box-sizing: border-box; padding: 12px 20px;}
+            header nav .gnb {display: none !important;}
+            header .header_util {display: none !important;}
+        }
+    

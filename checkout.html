@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문서 작성 | BEYOND THE SUMMIT</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+        <nav>
+            <ul class="gnb">
+                <li><a href="collection.html">컬렉션</a></li>
+                <li><a href="technology.html">테크놀로지</a></li>
+                <li><a href="expedition.html">익스페디션</a></li>
+                <li><a href="story.html">스토리</a></li>
+                <li><a href="store.html">스토어</a></li>
+            </ul>
+        </nav>
+        <div class="header_util">
+            <a href="#">검색</a>
+            <a href="login.html">로그인</a>
+            <a href="cart.html">장바구니</a>
+        </div>
+    </header>
+
+    <main class="cart">
+        <div class="crumb"><a href="index.html">홈</a><span>›</span><a href="cart.html">장바구니</a><span>›</span><strong>주문서 작성</strong></div>
+        <div class="cart_head">
+            <div class="eyebrow">CHECKOUT</div>
+            <h2>주문서 작성</h2>
+        </div>
+
+        <div class="steps">
+            <div class="s done"><span class="num">1</span>장바구니</div>
+            <span class="sep">›</span>
+            <div class="s on"><span class="num">2</span>주문서 작성</div>
+            <span class="sep">›</span>
+            <div class="s"><span class="num">3</span>주문 완료</div>
+        </div>
+
+        <div class="cart_wrap">
+            <div class="co_main">
+                <!-- 주문 상품 -->
+                <section class="co_sec">
+                    <h3>주문 상품</h3>
+                    <div class="box" id="coItems"></div>
+                </section>
+
+                <!-- 배송지 -->
+                <section class="co_sec">
+                    <h3>배송지 정보</h3>
+                    <div class="box form_box">
+                        <div class="frow"><label for="rcv">받는 분</label><div class="fc"><input type="text" id="rcv" value="테스트 사용자"></div></div>
+                        <div class="frow"><label for="tel">연락처</label><div class="fc"><input type="text" id="tel" value="010-1234-5678"></div></div>
+                        <div class="frow"><label for="addr">주소</label><div class="fc">
+                            <div class="inline"><input type="text" id="zip" value="03172" placeholder="우편번호"><button type="button">우편번호 찾기</button></div>
+                            <input type="text" id="addr" value="서울특별시 종로구 세종대로 000" style="margin-top:8px;">
+                            <input type="text" id="addr2" value="101동 1102호" style="margin-top:8px;">
+                        </div></div>
+                        <div class="frow"><label for="req">배송 요청사항</label><div class="fc"><select id="req">
+                            <option>부재 시 경비실에 맡겨주세요</option>
+                            <option>문 앞에 놓아주세요</option>
+                            <option>배송 전 연락 주세요</option>
+                            <option>직접 수령하겠습니다</option>
+                        </select></div></div>
+                    </div>
+                </section>
+
+                <!-- 할인 / 적립 -->
+                <section class="co_sec">
+                    <h3>할인 · 적립</h3>
+                    <div class="box form_box">
+                        <div class="frow"><label for="coupon">쿠폰</label><div class="fc"><select id="coupon">
+                            <option value="0">쿠폰 선택 안 함 (보유 2장)</option>
+                            <option value="p10">10% 할인 쿠폰</option>
+                            <option value="w5000">5,000원 할인 쿠폰</option>
+                        </select></div></div>
+                        <div class="frow"><label for="point">적립금</label><div class="fc">
+                            <div class="inline"><input type="number" id="point" value="0" min="0" step="1000"><button type="button" id="pointAll">전액 사용</button></div>
+                            <p class="fhint">보유 적립금 <b>12,000P</b></p>
+                        </div></div>
+                    </div>
+                </section>
+
+                <!-- 결제수단 -->
+                <section class="co_sec">
+                    <h3>결제 수단</h3>
+                    <div class="box">
+                        <div class="pay_methods">
+                            <label class="pm"><input type="radio" name="pm" checked> 신용 · 체크카드</label>
+                            <label class="pm"><input type="radio" name="pm"> 실시간 계좌이체</label>
+                            <label class="pm"><input type="radio" name="pm"> 무통장 입금</label>
+                            <label class="pm"><input type="radio" name="pm"> 간편결제 (Pay)</label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="co_side">
+                <h3>최종 결제 금액</h3>
+                <aside class="cart_side">
+                <div class="sum_row"><span>상품 금액</span><span class="v" id="sumGoods">0원</span></div>
+                <div class="sum_row free"><span>배송비</span><span class="v" id="sumShip">무료</span></div>
+                <div class="sum_row discount" id="rowCoupon" style="display:none;"><span>쿠폰 할인</span><span class="v" id="sumCoupon">0원</span></div>
+                <div class="sum_row discount" id="rowPoint" style="display:none;"><span>적립금 사용</span><span class="v" id="sumUsePoint">0원</span></div>
+                <div class="sum_total"><span class="lb">총 결제금액</span><span class="amt" id="sumTotal">0원</span></div>
+                <div class="sum_point" id="sumPoint">적립 예정 0P</div>
+                <label class="agree"><input type="checkbox" id="agree"> <span>주문 내용을 확인하였으며, 결제에 동의합니다.<br>(필수)</span></label>
+                <button class="pay_go" type="button" id="payGo" disabled>결제하기</button>
+                <a class="back_cart" href="cart.html">장바구니로 돌아가기</a>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        var ITEMS = [
+            { img: 'images/product-parka.png', nm: '서밋 프로텍트 다운 파카', op: 'Black Ice / M · 수량 1', pr: 489000 },
+            { img: 'images/product-shell-jacket.png', nm: '알파 쉴드 3L 재킷', op: '스톰 그레이 / M · 수량 1', pr: 369000 },
+            { img: 'images/product-gloves.png', nm: '써멀 글러브 시스템', op: '블랙 / M · 수량 2', pr: 158000 }
+        ];
+        var OWNED_POINT = 12000, FREE_SHIP = 50000, SHIP_FEE = 3000, POINT_RATE = 0.03;
+        var SUBTOTAL = ITEMS.reduce(function (s, it) { return s + it.pr; }, 0);
+
+        function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+        function won(n) { return n.toLocaleString('en-US') + '원'; }
+
+        document.getElementById('coItems').innerHTML = ITEMS.map(function (it) {
+            return '<div class="order_item"><div class="order_thumb"><img src="' + esc(it.img) + '" alt="' + esc(it.nm) + '"></div>' +
+                '<div class="order_info"><div class="nm">' + esc(it.nm) + '</div><div class="op">' + esc(it.op) + '</div><div class="pr">' + won(it.pr) + '</div></div></div>';
+        }).join('');
+
+        var couponEl = document.getElementById('coupon');
+        var pointEl = document.getElementById('point');
+
+        function couponAmount() {
+            var v = couponEl.value;
+            if (v === 'p10') return Math.floor(SUBTOTAL * 0.1);
+            if (v === 'w5000') return 5000;
+            return 0;
+        }
+
+        function recalc() {
+            var ship = SUBTOTAL >= FREE_SHIP ? 0 : SHIP_FEE;
+            var coupon = couponAmount();
+            var maxPoint = Math.min(OWNED_POINT, Math.max(0, SUBTOTAL - coupon));
+            var point = parseInt(pointEl.value, 10);
+            if (isNaN(point) || point < 0) point = 0;
+            if (point > maxPoint) { point = maxPoint; pointEl.value = maxPoint; }
+            var total = SUBTOTAL + ship - coupon - point;
+            if (total < 0) total = 0;
+            var earn = Math.floor((SUBTOTAL - coupon) * POINT_RATE);
+
+            document.getElementById('sumGoods').textContent = won(SUBTOTAL);
+            document.getElementById('sumShip').textContent = ship === 0 ? '무료' : won(ship);
+
+            var rc = document.getElementById('rowCoupon');
+            if (coupon > 0) { rc.style.display = 'flex'; document.getElementById('sumCoupon').textContent = '-' + won(coupon); }
+            else rc.style.display = 'none';
+            var rp = document.getElementById('rowPoint');
+            if (point > 0) { rp.style.display = 'flex'; document.getElementById('sumUsePoint').textContent = '-' + won(point); }
+            else rp.style.display = 'none';
+
+            document.getElementById('sumTotal').textContent = won(total);
+            document.getElementById('sumPoint').textContent = '적립 예정 ' + earn.toLocaleString('en-US') + 'P';
+            return total;
+        }
+
+        couponEl.addEventListener('change', recalc);
+        pointEl.addEventListener('input', recalc);
+        document.getElementById('pointAll').addEventListener('click', function () {
+            var coupon = couponAmount();
+            pointEl.value = Math.min(OWNED_POINT, Math.max(0, SUBTOTAL - coupon));
+            recalc();
+        });
+
+        var agree = document.getElementById('agree');
+        var payGo = document.getElementById('payGo');
+        agree.addEventListener('change', function () { payGo.disabled = !agree.checked; });
+        payGo.addEventListener('click', function () {
+            if (!agree.checked) return;
+            var total = recalc();
+            location.href = 'order-complete.html?total=' + total;
+        });
+
+        recalc();
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
+</body>
+</html>

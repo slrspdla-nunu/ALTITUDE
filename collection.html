@@ -4,420 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>컬렉션 | BEYOND THE SUMMIT</title>
-    <style>
-        * {margin: 0; padding: 0; box-sizing: border-box;}
-        li {list-style: none;}
-        a {text-decoration: none; color: inherit;}
-        button, select {font: inherit;}
-        img {vertical-align: top;}
-
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
-            font-weight: 400;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
-            font-weight: 600;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
-            font-weight: 800;
-            font-display: swap;
-        }
-
-        html {scrollbar-gutter: stable;}
-
-        body {
-            font-family: 'Pretendard', sans-serif;
-            color: #111820;
-            background: #f5f7f8;
-        }
-
-        header {position: absolute; max-width: 1400px; left: 50%; top: 0; transform: translateX(-50%); display: flex; justify-content: space-between; align-items: center; width: 100%; z-index: 15;}
-        header h1 {width: 100px;}
-        header h1 img {width: 100%; filter: invert(1) brightness(2.4) contrast(1.1);}
-        header nav .gnb {display: flex;}
-        header nav .gnb li {font-size: 18px; font-weight: 500; transition: 0.25s; text-shadow: 0 1px 14px rgba(0,0,0,0.55);}
-        header nav .gnb li a {color: #fff; display: block; padding: 10px 30px;}
-        header nav .gnb:hover li {transform: scale(0.9); opacity: 0.7;}
-        header nav .gnb li:hover {transform: scale(1.1); opacity: 1;}
-        header nav .gnb li:hover a {color: rgb(131, 236, 255);}
-        header nav .gnb li.active a {color: #fff; font-weight: 700; box-shadow: inset 0 -2px 0 rgb(131, 236, 255);}
-        header .header_util {display: flex; align-items: center; gap: 20px;}
-        header .header_util a {color: #fff; font-size: 14px; font-weight: 600; text-shadow: 0 1px 12px rgba(0,0,0,0.6); transition: 0.2s;}
-        header .header_util a:hover {color: rgb(131, 236, 255);}
-
-        main {
-            min-height: 100vh;
-        }
-
-        .collection_head {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(rgba(9, 17, 24, 0.76), rgba(9, 17, 24, 0.9)), url('images/bg2.png') center 42% / cover;
-            color: #fff;
-        }
-
-        .collection_head_inner {
-            position: relative;
-            max-width: 1420px;
-            margin: 0 auto;
-            padding: 132px 36px 56px;
-            min-height: 420px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .breadcrumb {
-            position: absolute;
-            top: 96px;
-            left: 36px;
-            margin-bottom: 0;
-            color: rgba(255, 255, 255, 0.55);
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .breadcrumb span {
-            margin: 0 7px;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .breadcrumb strong {
-            color: rgba(255, 255, 255, 0.85);
-            font-weight: 600;
-        }
-
-        .eyebrow {
-            margin-bottom: 14px;
-            color: #83ecff;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-        }
-
-        .collection_head h2 {
-            max-width: 820px;
-            font-size: 46px;
-            line-height: 1.02;
-            font-weight: 800;
-        }
-
-        .collection_head p {
-            max-width: 560px;
-            margin-top: 16px;
-            color: rgba(255, 255, 255, 0.72);
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        .category_bar {
-            position: relative;
-            background: #fff;
-            border-bottom: 1px solid #e5eaee;
-        }
-
-        .category_bar ul {
-            max-width: 1420px;
-            margin: 0 auto;
-            padding: 0 36px;
-            display: flex;
-            gap: 4px;
-            overflow-x: auto;
-        }
-
-        .category_bar a {
-            display: block;
-            padding: 18px 18px;
-            color: #6b7884;
-            font-size: 15px;
-            font-weight: 600;
-            white-space: nowrap;
-            transition: 0.15s;
-        }
-
-        .category_bar a:hover {
-            color: #111820;
-        }
-
-        .category_bar .active a {
-            color: #111820;
-            box-shadow: inset 0 -2px 0 #111820;
-        }
-
-        .shop_area {
-            max-width: 1420px;
-            margin: 0 auto;
-            padding: 44px 36px 90px;
-        }
-
-        .toolbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-
-        .toolbar strong {
-            font-size: 22px;
-            font-weight: 800;
-        }
-
-        .controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .chip,
-        .controls select {
-            height: 42px;
-            border: 1px solid #d6dde3;
-            border-radius: 3px;
-            background: #fff;
-            color: #24313d;
-            padding: 0 14px;
-            cursor: pointer;
-        }
-
-        .controls select {
-            appearance: none;
-            -webkit-appearance: none;
-            padding: 0 40px 0 14px;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%236b7884' stroke-width='1.6'><path d='M1 1.5 L6 6.5 L11 1.5'/></svg>");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-        }
-
-        .content_grid {
-            display: grid;
-            grid-template-columns: 240px minmax(0, 1fr);
-            gap: 28px;
-            align-items: start;
-        }
-
-        .filter_panel {
-            position: sticky;
-            top: 112px;
-            padding: 22px;
-            border: 1px solid #dce3e8;
-            background: #fff;
-        }
-
-        .filter_group + .filter_group {
-            margin-top: 28px;
-            padding-top: 24px;
-            border-top: 1px solid #e5eaee;
-        }
-
-        .filter_group h3 {
-            margin-bottom: 14px;
-            font-size: 15px;
-            font-weight: 800;
-        }
-
-        .filter_group label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            min-height: 34px;
-            color: #4b5965;
-            font-size: 14px;
-        }
-
-        .swatch_row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .swatch_row button {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            border: 1px solid #d6dde3;
-            padding: 0;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-
-        .size_row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .size_row button {
-            min-width: 44px;
-            height: 36px;
-            border: 1px solid #d6dde3;
-            border-radius: 3px;
-            background: #fff;
-            color: #36434f;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-
-        .swatch_row button:hover,
-        .size_row button:hover {
-            border-color: #111820;
-        }
-
-        .product_grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 22px;
-        }
-
-        .product_card_link {display: block; height: 100%;}
-
-        .product_card {
-            background: #fff;
-            border: 1px solid #dfe6eb;
-            transition: 0.2s;
-        }
-
-        .product_card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 36px rgba(25, 38, 50, 0.12);
-        }
-
-        .product_visual {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4 / 5;
-            background: #f0f2f4;
-        }
-
-        .product_visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        .product_card:hover .product_visual img {
-            transform: scale(1.04);
-        }
-
-        .badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            z-index: 1;
-            padding: 5px 9px;
-            background: #111820;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-        }
-
-        .badge.accent {
-            background: #1789c4;
-        }
-
-        .product_info {
-            padding: 16px 18px 20px;
-        }
-
-        .brand {
-            margin-bottom: 6px;
-            color: #97a3ad;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
-
-        .product_info h3 {
-            min-height: 44px;
-            font-size: 15px;
-            line-height: 1.45;
-            font-weight: 600;
-            color: #1a242e;
-        }
-
-        .swatches {
-            display: flex;
-            gap: 6px;
-            margin-top: 12px;
-        }
-
-        .swatches span {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 1px solid #d6dde3;
-        }
-
-        .price {
-            margin-top: 14px;
-            font-size: 17px;
-            font-weight: 800;
-        }
-
-        .feature_band {
-            margin-top: 56px;
-            padding: 38px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
-            background: #111820;
-            color: #fff;
-        }
-
-        .feature_band h3 {
-            margin-bottom: 10px;
-            color: #83ecff;
-            font-size: 15px;
-            font-weight: 800;
-        }
-
-        .feature_band p {
-            color: rgba(255, 255, 255, 0.72);
-            line-height: 1.6;
-            font-size: 15px;
-        }
-
-        @media (max-width: 1024px) {
-            .collection_head_inner {min-height: 360px;}
-            .collection_head h2 {font-size: 42px;}
-            .content_grid {grid-template-columns: 1fr;}
-            .filter_panel {position: static; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;}
-            .filter_group + .filter_group {margin-top: 0; padding-top: 0; border-top: 0;}
-            .product_grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
-        }
-
-        @media (max-width: 720px) {
-            .header_inner {height: auto; padding: 20px; display: block;}
-            .gnb {margin-top: 16px; overflow-x: auto;}
-            .gnb a {padding: 10px 12px; font-size: 14px;}
-            .util {display: none;}
-            .collection_head_inner {padding: 120px 20px 48px; min-height: 320px;}
-            .breadcrumb {top: 84px; left: 20px;}
-            .collection_head h2 {font-size: 34px;}
-            .collection_head p {font-size: 16px;}
-            .category_bar ul {padding: 0 20px;}
-            .shop_area {padding: 32px 20px 64px;}
-            .toolbar {align-items: flex-start; flex-direction: column;}
-            .controls {width: 100%; overflow-x: auto;}
-            .filter_panel {grid-template-columns: 1fr;}
-            .product_grid {grid-template-columns: 1fr;}
-            .feature_band {grid-template-columns: 1fr; padding: 28px;}
-        }
-    </style>
+    <link rel="stylesheet" href="collection.css">
 </head>
 <body>
     <header>
@@ -425,198 +12,113 @@
         <nav>
             <ul class="gnb">
                 <li class="active"><a href="collection.html">컬렉션</a></li>
-                <li><a href="#">테크놀로지</a></li>
-                <li><a href="#">익스페디션</a></li>
-                <li><a href="#">스토리</a></li>
-                <li><a href="#">스토어</a></li>
+                <li><a href="technology.html">테크놀로지</a></li>
+                <li><a href="expedition.html">익스페디션</a></li>
+                <li><a href="story.html">스토리</a></li>
+                <li><a href="store.html">스토어</a></li>
             </ul>
         </nav>
         <div class="header_util">
             <a href="#">검색</a>
-            <a href="#">로그인</a>
-            <a href="#">장바구니</a>
+            <a href="login.html">로그인</a>
+            <a href="cart.html">장바구니</a>
         </div>
     </header>
 
     <main>
-        <section class="collection_head">
-            <div class="collection_head_inner">
-                <div>
-                    <div class="breadcrumb"><a href="index.html">홈</a><span>›</span><strong>컬렉션</strong></div>
-                    <div class="eyebrow">COLLECTION</div>
-                    <h2>컬렉션</h2>
-                    <p>혹한을 위한 아우터, 레이어, 장비를 만나보세요.</p>
-                </div>
+        <!-- 히어로 -->
+        <section class="collection_hero">
+            <div class="collection_hero_inner">
+                <div class="breadcrumb"><a href="index.html">홈</a><span>›</span><strong>컬렉션</strong></div>
+                <div class="eyebrow">COLLECTION</div>
+                <h2>컬렉션</h2>
+                <p>극지 원정부터 도심의 겨울까지.<br>사용 환경별로 구성한 네 가지 라인에서 당신의 여정에 맞는 시작점을 찾아보세요.</p>
             </div>
-            <nav class="category_bar">
-                <ul>
-                    <li class="active"><a href="#">전체</a></li>
-                    <li><a href="#">아우터</a></li>
-                    <li><a href="#">미드레이어</a></li>
-                    <li><a href="#">팬츠</a></li>
-                    <li><a href="#">백팩</a></li>
-                    <li><a href="#">액세서리</a></li>
-                    <li><a href="#">익스페디션 라인</a></li>
-                </ul>
-            </nav>
         </section>
 
-        <section class="shop_area">
-            <div class="toolbar">
-                <strong>전체 상품 6</strong>
-                <div class="controls">
-                    <select aria-label="정렬">
-                        <option>추천순</option>
-                        <option>신상품순</option>
-                        <option>높은 가격순</option>
-                        <option>낮은 가격순</option>
-                    </select>
+        <!-- 인트로 -->
+        <section class="intro">
+            <div class="intro_inner">
+                <div class="eyebrow">SEASONAL LINES</div>
+                <h3>같은 겨울, 다른 강도.<br>라인으로 나눠 담았습니다.</h3>
+                <p>모든 제품은 하나의 스토어에 있지만, 라인은 "무엇을 위해 만들었는가"로 구분됩니다.<br>원하는 라인을 고르면 해당 제품을 스토어에서 바로 확인할 수 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- 컬렉션 라인 -->
+        <section class="lines">
+            <!-- 대표 라인 (풀 와이드) -->
+            <article class="line">
+                <img class="line_img pos_down" src="images/collections/expedition.png" alt="익스페디션 라인">
+                <div class="line_body">
+                    <div class="line_no">LINE 01</div>
+                    <div class="line_eyebrow">EXPEDITION</div>
+                    <h3>익스페디션 라인</h3>
+                    <p>극지·고산 원정을 기준으로 설계한 최상위 라인.<br>900 필파워 다운과 방풍·방수 셸을 결합해<br>가장 혹독한 환경에서 체온을 지킵니다.</p>
+                    <a class="line_link" href="expedition-line.html">스토어에서 보기 →</a>
                 </div>
+            </article>
+
+            <!-- 2단 라인 -->
+            <div class="lines_row">
+                <article class="line">
+                    <img class="line_img" src="images/collections/insulation.png" alt="인슐레이션 라인">
+                    <div class="line_body">
+                        <div class="line_no">LINE 02</div>
+                        <div class="line_eyebrow">INSULATION</div>
+                        <h3>인슐레이션 라인</h3>
+                        <p>다운과 보온 미드레이어 중심.<br>부피는 줄이고 온기는 더한 겨울 필수 방한 아이템.</p>
+                        <a class="line_link" href="store.html">스토어에서 보기 →</a>
+                    </div>
+                </article>
+                <article class="line">
+                    <img class="line_img" src="images/collections/shell.png" alt="쉘 & 프로텍션 라인">
+                    <div class="line_body">
+                        <div class="line_no">LINE 03</div>
+                        <div class="line_eyebrow">SHELL &amp; PROTECTION</div>
+                        <h3>쉘 &amp; 프로텍션</h3>
+                        <p>방수·방풍 셸과 팬츠.<br>눈과 비, 강풍으로부터 몸을 지키는 아우터 레이어.</p>
+                        <a class="line_link" href="store.html">스토어에서 보기 →</a>
+                    </div>
+                </article>
             </div>
 
-            <div class="content_grid">
-                <aside class="filter_panel">
-                    <div class="filter_group">
-                        <h3>색상</h3>
-                        <div class="swatch_row">
-                            <button type="button" style="background:#1b2a36;" aria-label="네이비"></button>
-                            <button type="button" style="background:#111820;" aria-label="블랙"></button>
-                            <button type="button" style="background:#6b7884;" aria-label="그레이"></button>
-                            <button type="button" style="background:#c0392b;" aria-label="레드"></button>
-                            <button type="button" style="background:#3a7d5d;" aria-label="그린"></button>
-                            <button type="button" style="background:#f5f7f8;" aria-label="화이트"></button>
-                        </div>
-                    </div>
-                    <div class="filter_group">
-                        <h3>사이즈</h3>
-                        <div class="size_row">
-                            <button type="button">XS</button>
-                            <button type="button">S</button>
-                            <button type="button">M</button>
-                            <button type="button">L</button>
-                            <button type="button">XL</button>
-                        </div>
-                    </div>
-                    <div class="filter_group">
-                        <h3>가격대</h3>
-                        <label><input type="radio" name="price"> 10만원 이하</label>
-                        <label><input type="radio" name="price"> 10만 ~ 30만원</label>
-                        <label><input type="radio" name="price"> 30만 ~ 50만원</label>
-                        <label><input type="radio" name="price"> 50만원 이상</label>
-                    </div>
-                    <div class="filter_group">
-                        <h3>기능</h3>
-                        <label><input type="checkbox"> 방수</label>
-                        <label><input type="checkbox"> 방풍</label>
-                        <label><input type="checkbox"> 보온</label>
-                        <label><input type="checkbox"> 경량</label>
-                    </div>
-                </aside>
-
-                <div>
-                    <div class="product_grid">
-                        <article class="product_card">
-                            <a class="product_card_link" href="product-parka.html">
-                                <div class="product_visual">
-                                    <span class="badge">NEW</span>
-                                    <img src="images/product-parka.png" alt="서밋 프로텍트 다운 파카">
-                                </div>
-                                <div class="product_info">
-                                    <div class="brand">ALTITUDE</div>
-                                    <h3>서밋 프로텍트 다운 파카</h3>
-                                    <div class="swatches"><span style="background:#1b2a36;"></span><span style="background:#111820;"></span><span style="background:#c0392b;"></span></div>
-                                    <div class="price">489,000원</div>
-                                </div>
-                            </a>
-                        </article>
-                        <article class="product_card">
-                            <div class="product_visual">
-                                <img src="images/product-shell-jacket.png" alt="알파 쉴드 3L 재킷">
-                            </div>
-                            <div class="product_info">
-                                <div class="brand">ALTITUDE</div>
-                                <h3>알파 쉴드 3L 재킷</h3>
-                                <div class="swatches"><span style="background:#111820;"></span><span style="background:#3a7d5d;"></span></div>
-                                <div class="price">369,000원</div>
-                            </div>
-                        </article>
-                        <article class="product_card">
-                            <div class="product_visual">
-                                <span class="badge accent">BEST</span>
-                                <img src="images/product-fleece.png" alt="그리드 웜 미드레이어">
-                            </div>
-                            <div class="product_info">
-                                <div class="brand">ALTITUDE</div>
-                                <h3>그리드 웜 미드레이어</h3>
-                                <div class="swatches"><span style="background:#6b7884;"></span><span style="background:#1b2a36;"></span><span style="background:#f5f7f8;"></span></div>
-                                <div class="price">149,000원</div>
-                            </div>
-                        </article>
-                        <article class="product_card">
-                            <div class="product_visual">
-                                <img src="images/product-pants.png" alt="하이크 테크 스트레치 팬츠">
-                            </div>
-                            <div class="product_info">
-                                <div class="brand">ALTITUDE</div>
-                                <h3>하이크 테크 스트레치 팬츠</h3>
-                                <div class="swatches"><span style="background:#111820;"></span><span style="background:#6b7884;"></span></div>
-                                <div class="price">128,000원</div>
-                            </div>
-                        </article>
-                        <article class="product_card">
-                            <div class="product_visual">
-                                <span class="badge">NEW</span>
-                                <img src="images/product-backpack.png" alt="알파인 루트 백팩 45">
-                            </div>
-                            <div class="product_info">
-                                <div class="brand">ALTITUDE</div>
-                                <h3>알파인 루트 백팩 45</h3>
-                                <div class="swatches"><span style="background:#111820;"></span><span style="background:#3a7d5d;"></span></div>
-                                <div class="price">219,000원</div>
-                            </div>
-                        </article>
-                        <article class="product_card">
-                            <div class="product_visual">
-                                <img src="images/product-gloves.png" alt="써멀 글러브 시스템">
-                            </div>
-                            <div class="product_info">
-                                <div class="brand">ALTITUDE</div>
-                                <h3>써멀 글러브 시스템</h3>
-                                <div class="swatches"><span style="background:#111820;"></span><span style="background:#1b2a36;"></span></div>
-                                <div class="price">79,000원</div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="feature_band">
-                        <div>
-                            <h3>WEATHER READY</h3>
-                            <p>방수, 방풍, 투습 기능을 기준으로 날씨 변화에 대응합니다.</p>
-                        </div>
-                        <div>
-                            <h3>LAYER SYSTEM</h3>
-                            <p>베이스부터 쉘까지 레이어 조합을 고려해 상품을 탐색할 수 있습니다.</p>
-                        </div>
-                        <div>
-                            <h3>FIELD TESTED</h3>
-                            <p>겨울 산행과 장거리 트레킹을 위한 내구성과 착용감을 강조합니다.</p>
-                        </div>
-                    </div>
+            <!-- 데일리 라인 (풀 와이드) -->
+            <article class="line">
+                <img class="line_img pos_down" src="images/collections/daily.png" alt="데일리 웜 라인">
+                <div class="line_body">
+                    <div class="line_no">LINE 04</div>
+                    <div class="line_eyebrow">DAILY WARMTH</div>
+                    <h3>데일리 웜 라인</h3>
+                    <p>도심의 겨울을 위한 가벼운 방한.<br>백팩·글러브 등 데일리 액세서리까지,<br>일상에 자연스럽게 녹아드는 구성.</p>
+                    <a class="line_link" href="store.html">스토어에서 보기 →</a>
                 </div>
+            </article>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <div class="cta_inner">
+                <h3>지금 바로 구매하고 싶다면</h3>
+                <p>모든 라인의 제품은 스토어에서 필터·정렬해<br>한눈에 볼 수 있습니다.</p>
+                <a href="store.html">전체 상품 보기 →</a>
             </div>
         </section>
     </main>
+
+    <script>
+        // 아직 없는 라인 이미지는 다크 패널로만 표시 (추후 images/collections/ 에 파일 추가 시 자동 노출)
+        document.querySelectorAll('.line_img').forEach((img) => {
+            const hide = () => { img.style.display = 'none'; };
+            img.addEventListener('error', hide);
+            if (img.complete && img.naturalWidth === 0) hide();
+        });
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 

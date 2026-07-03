@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문 상세 | BEYOND THE SUMMIT</title>
+    <script>if (!localStorage.getItem('bts_user')) { location.replace('login.html'); }</script>
+    <link rel="stylesheet" href="order-detail.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+        <nav>
+            <ul class="gnb">
+                <li><a href="collection.html">컬렉션</a></li>
+                <li><a href="technology.html">테크놀로지</a></li>
+                <li><a href="expedition.html">익스페디션</a></li>
+                <li><a href="story.html">스토리</a></li>
+                <li><a href="store.html">스토어</a></li>
+            </ul>
+        </nav>
+        <div class="header_util">
+            <a href="#">검색</a>
+            <a href="login.html">로그인</a>
+            <a href="cart.html">장바구니</a>
+        </div>
+    </header>
+
+    <main class="acct">
+        <div class="crumb"><a href="index.html">홈</a><span>›</span><a href="mypage.html">마이페이지</a><span>›</span><a href="order-list.html">주문 내역</a><span>›</span><strong>주문 상세</strong></div>
+        <div class="acct_head">
+            <div class="eyebrow">ORDER DETAIL</div>
+            <h2>주문 상세 <span id="odBadge" class="od_badge"></span></h2>
+            <div class="meta" id="odMeta"></div>
+        </div>
+
+        <!-- 배송 현황 -->
+        <div class="sec">
+            <h3>배송 현황</h3>
+            <div class="box">
+                <div class="track" id="odTrack"></div>
+                <div class="track_info" id="odTrackInfo"></div>
+            </div>
+        </div>
+
+        <!-- 주문 상품 -->
+        <div class="sec">
+            <h3>주문 상품</h3>
+            <div class="box" id="odItems"></div>
+        </div>
+
+        <!-- 배송지 -->
+        <div class="sec">
+            <h3>배송지 정보</h3>
+            <div class="box infolist" id="odShip"></div>
+        </div>
+
+        <!-- 결제 정보 -->
+        <div class="sec">
+            <h3>결제 정보</h3>
+            <div class="box pay" id="odPay"></div>
+        </div>
+
+        <div class="acct_btns" id="odBtns"></div>
+    </main>
+
+    <script>
+        var ORDERS = {
+            '20260628-0012': {
+                date: '2026.06.28', status: 'shipping', cur: 3,
+                courier: 'CJ대한통운', invoice: '6012-3948-1121', doneDate: '',
+                steps: [{ l: '주문접수', d: '06.28' }, { l: '결제완료', d: '06.28' }, { l: '상품준비중', d: '06.29' }, { l: '배송중', d: '06.30' }, { l: '배송완료', d: '-' }],
+                items: [
+                    { img: 'images/product-parka.png', nm: '서밋 프로텍트 다운 파카', op: 'Black Ice / M · 수량 1', pr: '489,000원' },
+                    { img: 'images/product-gloves.png', nm: '써멀 글러브 시스템', op: '블랙 / M · 수량 1', pr: '79,000원' }
+                ],
+                ship: { '받는 분': '테스트 사용자', '연락처': '010-****-1234', '주소': '서울특별시 종로구 세종대로 000, 101동 1102호', '배송 메모': '부재 시 경비실에 맡겨주세요.' },
+                pay: { goods: '568,000원', shipfee: '무료', discountLabel: '등급 할인 (SUMMIT 5%)', discount: '-28,400원', total: '539,600원', point: '적립 예정 16,188P' }
+            },
+            '20260514-0088': {
+                date: '2026.05.14', status: 'done', cur: 4,
+                courier: '한진택배', invoice: '4410-2201-7789', doneDate: '2026.05.16',
+                steps: [{ l: '주문접수', d: '05.14' }, { l: '결제완료', d: '05.14' }, { l: '상품준비중', d: '05.15' }, { l: '배송중', d: '05.15' }, { l: '배송완료', d: '05.16' }],
+                items: [
+                    { img: 'images/product-fleece.png', nm: '그리드 웜 미드레이어', op: '그레이 / L · 수량 1', pr: '149,000원' }
+                ],
+                ship: { '받는 분': '테스트 사용자', '연락처': '010-****-1234', '주소': '서울특별시 종로구 세종대로 000, 101동 1102호', '배송 메모': '부재 시 경비실에 맡겨주세요.' },
+                pay: { goods: '149,000원', shipfee: '무료', discountLabel: '등급 할인 (SUMMIT 5%)', discount: '-7,450원', total: '141,550원', point: '적립 4,246P' }
+            },
+            '20260302-0041': {
+                date: '2026.03.02', status: 'done', cur: 4,
+                courier: '롯데택배', invoice: '2093-5510-3321', doneDate: '2026.03.05',
+                steps: [{ l: '주문접수', d: '03.02' }, { l: '결제완료', d: '03.02' }, { l: '상품준비중', d: '03.03' }, { l: '배송중', d: '03.04' }, { l: '배송완료', d: '03.05' }],
+                items: [
+                    { img: 'images/product-shell-jacket.png', nm: '알파 쉴드 3L 재킷', op: '스톰 그레이 / M · 수량 1', pr: '369,000원' },
+                    { img: 'images/product-pants.png', nm: '하이크 테크 스트레치 팬츠', op: '블랙 / 32 · 수량 1', pr: '139,000원' }
+                ],
+                ship: { '받는 분': '테스트 사용자', '연락처': '010-****-1234', '주소': '서울특별시 종로구 세종대로 000, 101동 1102호', '배송 메모': '부재 시 경비실에 맡겨주세요.' },
+                pay: { goods: '508,000원', shipfee: '무료', discountLabel: '등급 할인 (SUMMIT 5%)', discount: '-25,400원', total: '482,600원', point: '적립 14,478P' }
+            }
+        };
+
+        function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+        var id = new URLSearchParams(location.search).get('order');
+        if (!ORDERS[id]) id = '20260628-0012';
+        var o = ORDERS[id];
+
+        // 상태 배지 + 메타
+        var badge = document.getElementById('odBadge');
+        badge.className = 'od_badge ' + (o.status === 'done' ? 'done' : 'ship');
+        badge.textContent = o.status === 'done' ? '배송완료' : '배송중';
+        document.getElementById('odMeta').textContent = '주문번호 ' + id + ' · 주문일 ' + o.date;
+
+        // 타임라인
+        document.getElementById('odTrack').innerHTML = o.steps.map(function (s, i) {
+            var cls = '';
+            if (o.status === 'done') { cls = i === 4 ? 'done fin' : 'done'; }
+            else { cls = i < o.cur ? 'done' : (i === o.cur ? 'cur' : ''); }
+            return '<div class="st ' + cls + '"><span class="dot"></span><div class="l">' + esc(s.l) + '</div><div class="d">' + esc(s.d) + '</div></div>';
+        }).join('');
+
+        // 배송 정보
+        var ti = '<span>택배사 <b>' + esc(o.courier) + '</b></span><span>운송장번호 <b>' + esc(o.invoice) + '</b></span>';
+        if (o.status === 'done' && o.doneDate) ti += '<span>배송완료 <b>' + esc(o.doneDate) + '</b></span>';
+        document.getElementById('odTrackInfo').innerHTML = ti;
+
+        // 주문 상품
+        document.getElementById('odItems').innerHTML = o.items.map(function (it) {
+            return '<div class="order_item"><div class="order_thumb"><img src="' + esc(it.img) + '" alt="' + esc(it.nm) + '"></div>' +
+                '<div class="order_info"><div class="nm">' + esc(it.nm) + '</div><div class="op">' + esc(it.op) + '</div><div class="pr">' + esc(it.pr) + '</div></div></div>';
+        }).join('');
+
+        // 배송지
+        document.getElementById('odShip').innerHTML = Object.keys(o.ship).map(function (k) {
+            return '<dl><dt>' + esc(k) + '</dt><dd>' + esc(o.ship[k]) + '</dd></dl>';
+        }).join('');
+
+        // 결제
+        document.getElementById('odPay').innerHTML =
+            '<div class="row"><span>상품 금액</span><span class="v">' + esc(o.pay.goods) + '</span></div>' +
+            '<div class="row"><span>배송비</span><span class="v">' + esc(o.pay.shipfee) + '</span></div>' +
+            '<div class="row discount"><span>' + esc(o.pay.discountLabel) + '</span><span class="v">' + esc(o.pay.discount) + '</span></div>' +
+            '<div class="total"><span class="lb">총 결제금액</span><span class="amt">' + esc(o.pay.total) + '</span></div>' +
+            '<div class="point">' + esc(o.pay.point) + '</div>';
+
+        // 버튼
+        var btns = '<a class="btn_line" href="order-list.html">목록으로</a>';
+        if (o.status === 'done') {
+            btns += '<button class="btn_line" type="button">교환 · 반품 신청</button>';
+            btns += '<a class="btn_dark" href="review-write.html">리뷰 작성</a>';
+        } else {
+            btns += '<button class="btn_dark" type="button">교환 · 반품 신청</button>';
+        }
+        document.getElementById('odBtns').innerHTML = btns;
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
+</body>
+</html>

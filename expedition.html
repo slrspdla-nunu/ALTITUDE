@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>익스페디션 | BEYOND THE SUMMIT</title>
+    <link rel="stylesheet" href="expedition.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+        <nav>
+            <ul class="gnb">
+                <li><a href="collection.html">컬렉션</a></li>
+                <li><a href="technology.html">테크놀로지</a></li>
+                <li class="active"><a href="expedition.html">익스페디션</a></li>
+                <li><a href="story.html">스토리</a></li>
+                <li><a href="store.html">스토어</a></li>
+            </ul>
+        </nav>
+        <div class="header_util">
+            <a href="#">검색</a>
+            <a href="login.html">로그인</a>
+            <a href="cart.html">장바구니</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 히어로 -->
+        <section class="exp_hero">
+            <div class="exp_hero_inner">
+                <div class="breadcrumb"><a href="index.html">홈</a><span>›</span><strong>익스페디션</strong></div>
+                <div class="eyebrow">EXPEDITION</div>
+                <h2>익스페디션</h2>
+                <p>가장 높은 곳, 가장 추운 곳.<br>BEYOND THE SUMMIT가 함께한 원정의 기록과 현장의 목소리를 전합니다.</p>
+            </div>
+        </section>
+
+        <!-- 인트로 -->
+        <section class="intro">
+            <div class="intro_inner">
+                <div class="eyebrow">FIELD-PROVEN</div>
+                <h3>우리의 장비는 실험실이 아니라<br>원정에서 증명됩니다.</h3>
+                <p>브랜드가 후원하는 원정대는 극한의 환경에서 제품을 시험하고,<br>그 데이터가 다음 시즌의 익스페디션 라인으로 돌아옵니다.<br>아래는 최근 함께한 주요 원정과 현장 기록입니다.</p>
+            </div>
+        </section>
+
+        <!-- 주요 원정 기록 -->
+        <div class="section_head">
+            <div class="eyebrow">EXPEDITION LOG</div>
+            <h3>주요 원정 기록</h3>
+        </div>
+        <section class="expeditions">
+            <!-- 피처: 대표 원정 (진행중) -->
+            <article class="exp_featured" data-exp="k2">
+                <img class="exp_img" src="images/expedition/exp-k2.png" alt="K2 겨울 원정">
+                <div class="year_mark">2025</div>
+                <div class="featured_body">
+                    <span class="kicker">IN PROGRESS · KARAKORAM</span>
+                    <div class="exp_meta">
+                        <span class="exp_badge live"><span class="live_dot"></span>진행중</span>
+                        <span class="exp_where">파키스탄 · 카라코람 · 2025</span>
+                    </div>
+                    <h4>K2 겨울 원정</h4>
+                    <p>세계 제2봉 K2(8,611m)의 동계 무산소 등정을 목표로 한 원정.<br>서밋 프로텍트 다운 파카와 스톰 실드 셸이<br>영하 50도의 강풍 속에서 현장 테스트되고 있습니다.</p>
+                    <span class="exp_more">원정 기록 보기 →</span>
+                </div>
+            </article>
+
+            <!-- 카드 그리드: 나머지 원정 -->
+            <div class="exp_grid">
+                <article class="exp_card" data-exp="greenland">
+                    <img class="exp_img" src="images/expedition/exp-greenland.png" alt="그린란드 무보급 횡단">
+                    <span class="card_index">02</span>
+                    <div class="card_body">
+                        <div class="exp_meta">
+                            <span class="exp_badge done">성공</span>
+                            <span class="exp_where">그린란드 · 2024</span>
+                        </div>
+                        <h4>그린란드 무보급 횡단</h4>
+                        <p>560km 빙원을 32일간 무보급으로 횡단.<br>경량 패킹 시스템의 내구성을 검증했습니다.</p>
+                        <span class="exp_more">기록 보기 →</span>
+                    </div>
+                </article>
+                <article class="exp_card" data-exp="annapurna">
+                    <img class="exp_img" src="images/expedition/exp-annapurna.png" alt="안나푸르나 남벽 신루트">
+                    <span class="card_index">03</span>
+                    <div class="card_body">
+                        <div class="exp_meta">
+                            <span class="exp_badge done">성공</span>
+                            <span class="exp_where">네팔 · 히말라야 · 2023</span>
+                        </div>
+                        <h4>안나푸르나 남벽 신루트</h4>
+                        <p>미답의 남벽 라인을 알파인 스타일로 개척.<br>방수 셸의 투습 성능이 핵심이었습니다.</p>
+                        <span class="exp_more">기록 보기 →</span>
+                    </div>
+                </article>
+                <article class="exp_card" data-exp="denali">
+                    <img class="exp_img" src="images/expedition/exp-denali.png" alt="데날리 극지 트레이닝">
+                    <span class="card_index">04</span>
+                    <div class="card_body">
+                        <div class="exp_meta">
+                            <span class="exp_badge done">성공</span>
+                            <span class="exp_where">미국 알래스카 · 2023</span>
+                        </div>
+                        <h4>데날리 극지 트레이닝</h4>
+                        <p>북미 최고봉 데날리(6,190m)에서 진행한<br>대원 선발·적응 훈련.<br>인슐레이션 라인의 부위별 보온 설계를 다듬었습니다.</p>
+                        <span class="exp_more">기록 보기 →</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 필드 다이어리 -->
+        <section class="diary">
+            <div class="diary_inner">
+                <div class="eyebrow">FIELD DIARY</div>
+                <h3>현장에서 온 기록</h3>
+                <div class="timeline">
+                    <div class="entry">
+                        <div class="when"><span class="date">2025.02.14</span><span class="place">K2 · 캠프3 (7,200m)</span></div>
+                        <h4>강풍으로 캠프3 대기 이틀째</h4>
+                        <p>초속 30m의 제트기류가 정상 능선을 덮었다.<br>텐트 안 기온은 영하 38도.<br>다운의 로프트가 살아 있어 체온은 지켜지고 있다.<br>기상 창이 열리는 순간을 기다린다.</p>
+                        <div class="thumb"><img src="images/expedition/diary-01.png" alt="캠프3 현장"></div>
+                    </div>
+                    <div class="entry">
+                        <div class="when"><span class="date">2025.01.28</span><span class="place">K2 · 베이스캠프 (5,150m)</span></div>
+                        <h4>베이스캠프 구축 완료</h4>
+                        <p>보름간의 카라반 끝에 베이스캠프를 세웠다.<br>이제부터는 고소 적응과 루트 공작이 시작된다.<br>대원 전원 컨디션 양호.</p>
+                    </div>
+                    <div class="entry">
+                        <div class="when"><span class="date">2024.09.10</span><span class="place">그린란드 · 빙원 중앙부</span></div>
+                        <h4>무보급 횡단 32일차, 마지막 구간</h4>
+                        <p>썰매 무게는 절반으로 줄었지만 화이트아웃이 사흘째 이어진다.<br>GPS와 나침반에 의지해 하루 22km를 밀어붙였다.<br>동해안까지 40km 남았다.</p>
+                        <div class="thumb"><img src="images/expedition/diary-02.png" alt="그린란드 빙원"></div>
+                    </div>
+                    <div class="entry">
+                        <div class="when"><span class="date">2023.05.19</span><span class="place">안나푸르나 · 남벽 4,900m</span></div>
+                        <h4>남벽 신루트 첫 비박</h4>
+                        <p>수직에 가까운 얼음 벽에 포타레지를 걸고 첫 밤을 보냈다.<br>폭설 속에서도 셸 내부는 보송했다.<br>내일 크럭스 구간을 넘는다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="exp_cta">
+            <div class="exp_cta_inner">
+                <h3>원정에서 검증된 장비</h3>
+                <p>같은 조건을 견디도록 만든 익스페디션 라인을<br>스토어에서 만나보세요.</p>
+                <a href="expedition-line.html">익스페디션 라인 보기 →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 원정 상세 모달 -->
+    <div class="exp_modal" id="expModal" aria-hidden="true">
+        <div class="exp_modal_card" role="dialog" aria-modal="true" aria-labelledby="expModalTitle">
+            <div class="exp_modal_hero">
+                <img id="expModalImg" src="" alt="">
+                <button class="exp_modal_close" type="button" data-close aria-label="닫기">×</button>
+                <div class="exp_modal_headline">
+                    <div class="exp_meta">
+                        <span class="exp_badge" id="expModalBadge"></span>
+                        <span class="exp_where" id="expModalWhere"></span>
+                    </div>
+                    <h3 id="expModalTitle"></h3>
+                </div>
+            </div>
+            <div class="exp_modal_body">
+                <div class="exp_stats" id="expModalStats"></div>
+                <div class="exp_story" id="expModalStory"></div>
+                <div class="exp_gear_wrap">
+                    <h4>USED GEAR · 사용 장비</h4>
+                    <div class="exp_gear" id="expModalGear"></div>
+                </div>
+                <a class="exp_modal_cta" href="expedition-line.html">익스페디션 라인 보기 →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 원정 패널 이미지가 아직 없으면 다크 패널로만 표시
+        document.querySelectorAll('.exp_img').forEach((img) => {
+            const hide = () => { img.style.display = 'none'; };
+            img.addEventListener('error', hide);
+            if (img.complete && img.naturalWidth === 0) hide();
+        });
+        // 다이어리 썸네일이 아직 없으면 회색 자리로만 표시
+        document.querySelectorAll('.entry .thumb img').forEach((img) => {
+            const hide = () => { img.style.visibility = 'hidden'; };
+            img.addEventListener('error', hide);
+            if (img.complete && img.naturalWidth === 0) hide();
+        });
+
+        // ===== 원정 상세 모달 =====
+        const EXP_DATA = {
+            k2: {
+                title: 'K2 겨울 원정', where: '파키스탄 · 카라코람 · 2025',
+                status: {text: '진행중', cls: 'live'}, img: 'images/expedition/exp-k2.png',
+                stats: [{num: '68', unit: '일차', label: 'DURATION'}, {num: '8,200', unit: 'm', label: 'MAX ALT'}, {num: '6', unit: '명', label: 'MEMBERS'}, {num: '무산소', unit: '', label: 'STYLE'}],
+                story: [
+                    '세계 제2봉 K2(8,611m)의 동계 무산소 등정을 목표로 한 원정. 여름에도 등정률이 낮은 이 봉우리를 한겨울에 오른다는 것은 인간과 장비 모두에게 극한의 시험이다.',
+                    '베이스캠프 구축 이후 68일째, 대원들은 캠프3(7,200m)까지 루트를 열었다. 초속 30m의 제트기류와 체감 영하 50도 속에서 서밋 프로텍트 다운 파카와 스톰실드 셸이 마지막 방어선이 되고 있다.',
+                    '기상 창이 열리는 순간을 기다리며, 원정은 지금도 진행 중이다.'
+                ],
+                gear: ['서밋 프로텍트 다운 파카', '스톰실드 3L 셸', '써멀 글러브 시스템', '알파인 루트 백팩 45']
+            },
+            greenland: {
+                title: '그린란드 무보급 횡단', where: '그린란드 · 2024',
+                status: {text: '성공', cls: 'done'}, img: 'images/expedition/exp-greenland.png',
+                stats: [{num: '32', unit: '일', label: 'DURATION'}, {num: '560', unit: 'km', label: 'DISTANCE'}, {num: '4', unit: '명', label: 'MEMBERS'}, {num: '무보급', unit: '', label: 'STYLE'}],
+                story: [
+                    '그린란드 빙원 560km를 32일간 무보급으로 횡단한 원정. 모든 식량과 장비를 썰매에 싣고, 외부 지원 없이 서에서 동으로 대륙을 가로질렀다.',
+                    '하루 평균 18km, 화이트아웃과 크레바스 지대를 넘으며 경량 패킹 시스템의 내구성과 보온 효율을 실전에서 검증했다. 짐 1g을 줄이는 것이 곧 생존과 직결되는 여정이었다.'
+                ],
+                gear: ['경량 패킹 다운', '15D 립스탑 셸', '그리드 웜 미드레이어', '설상 백팩']
+            },
+            annapurna: {
+                title: '안나푸르나 남벽 신루트', where: '네팔 · 히말라야 · 2023',
+                status: {text: '성공', cls: 'done'}, img: 'images/expedition/exp-annapurna.png',
+                stats: [{num: '21', unit: '일', label: 'DURATION'}, {num: '8,091', unit: 'm', label: 'SUMMIT'}, {num: '3', unit: '명', label: 'MEMBERS'}, {num: '알파인', unit: '', label: 'STYLE'}],
+                story: [
+                    '안나푸르나(8,091m) 남벽에 미답의 신루트를 알파인 스타일로 개척한 원정. 고정 로프와 대규모 캠프 없이, 3인 팀이 최소한의 장비로 벽을 밀어붙였다.',
+                    '수직에 가까운 빙벽에서의 연속 비박, 잦은 강설 속에서 3L 방수 셸의 투습 성능이 컨디션을 좌우했다. 젖지 않는 것이 곧 체온을 지키는 일이었다.'
+                ],
+                gear: ['스톰실드 3L 셸', '하이크 테크 스트레치 팬츠', '써멀 글러브 시스템']
+            },
+            denali: {
+                title: '데날리 극지 트레이닝', where: '미국 알래스카 · 2023',
+                status: {text: '성공', cls: 'done'}, img: 'images/expedition/exp-denali.png',
+                stats: [{num: '18', unit: '일', label: 'DURATION'}, {num: '6,190', unit: 'm', label: 'SUMMIT'}, {num: '8', unit: '명', label: 'MEMBERS'}, {num: '훈련', unit: '', label: 'PURPOSE'}],
+                story: [
+                    '북미 최고봉 데날리(6,190m)에서 진행한 대원 선발·적응 훈련. 다음 히말라야 원정을 위한 팀의 고소 적응과 장비 시험을 겸했다.',
+                    '부위별로 충전량을 달리한 인슐레이션 라인을 실전 데이터로 다듬었고, 극지의 강풍 속에서 레이어링 조합의 완성도를 끌어올렸다.'
+                ],
+                gear: ['인슐레이션 다운 재킷', '그리드 웜 미드레이어', '써멀 글러브 시스템', '설상 백팩']
+            }
+        };
+
+        const expModal = document.getElementById('expModal');
+        const expModalImg = document.getElementById('expModalImg');
+        expModalImg.addEventListener('error', function () { this.style.visibility = 'hidden'; });
+
+        function openExp(key) {
+            const d = EXP_DATA[key];
+            if (!d) return;
+            expModalImg.style.visibility = '';
+            expModalImg.src = d.img;
+            expModalImg.alt = d.title;
+            const badge = document.getElementById('expModalBadge');
+            badge.className = 'exp_badge ' + d.status.cls;
+            badge.textContent = d.status.text;
+            document.getElementById('expModalWhere').textContent = d.where;
+            document.getElementById('expModalTitle').textContent = d.title;
+
+            const stats = document.getElementById('expModalStats');
+            stats.innerHTML = '';
+            d.stats.forEach((s) => {
+                const el = document.createElement('div'); el.className = 'exp_stat';
+                const num = document.createElement('div'); num.className = 'num'; num.textContent = s.num;
+                if (s.unit) { const u = document.createElement('span'); u.textContent = s.unit; num.appendChild(u); }
+                const lb = document.createElement('div'); lb.className = 'label'; lb.textContent = s.label;
+                el.appendChild(num); el.appendChild(lb); stats.appendChild(el);
+            });
+
+            const story = document.getElementById('expModalStory');
+            story.innerHTML = '';
+            d.story.forEach((t) => { const p = document.createElement('p'); p.textContent = t; story.appendChild(p); });
+
+            const gear = document.getElementById('expModalGear');
+            gear.innerHTML = '';
+            d.gear.forEach((g) => { const s = document.createElement('span'); s.textContent = g; gear.appendChild(s); });
+
+            expModal.classList.add('open');
+            expModal.querySelector('.exp_modal_card').scrollTop = 0;
+            document.body.style.overflow = 'hidden';
+        }
+        function closeExp() { expModal.classList.remove('open'); document.body.style.overflow = ''; }
+
+        document.querySelectorAll('[data-exp]').forEach((card) => {
+            card.addEventListener('click', () => openExp(card.dataset.exp));
+        });
+        expModal.querySelector('[data-close]').addEventListener('click', closeExp);
+        expModal.addEventListener('click', (e) => { if (e.target === expModal) closeExp(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && expModal.classList.contains('open')) closeExp(); });
+    </script>
+    <script src="search.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="mobile-nav.js" defer></script>
+</body>
+</html>
+

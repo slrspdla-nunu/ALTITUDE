@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 | BEYOND THE SUMMIT</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="auth">
+        <!-- 좌측 브랜드 비주얼 -->
+        <section class="auth_visual">
+            <h1 class="v_logo"><a href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a></h1>
+            <div class="v_tag">
+                <div class="eyebrow">BEYOND THE SUMMIT</div>
+                <h2>한계를 넘어,<br>가장 차가운 곳까지.</h2>
+                <p>지금 가입하고 멤버 전용 혜택을 먼저 만나보세요.</p>
+            </div>
+        </section>
+
+        <!-- 우측 로그인 폼 -->
+        <section class="auth_form_wrap">
+            <div class="auth_form">
+                <a class="m_logo" href="index.html"><img src="images/logo.png" alt="BEYOND THE SUMMIT"></a>
+                <h1>회원가입</h1>
+                <p class="sub">BEYOND THE SUMMIT 멤버가 되어보세요.</p>
+
+                <form id="signupForm" novalidate>
+                    <div class="field">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력하세요" autocomplete="name">
+                    </div>
+                    <div class="field">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="username">
+                    </div>
+                    <div class="field">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" placeholder="8자 이상 입력하세요" autocomplete="new-password">
+                    </div>
+                    <div class="field">
+                        <label for="password2">비밀번호 확인</label>
+                        <input type="password" id="password2" name="password2" placeholder="비밀번호를 다시 입력하세요" autocomplete="new-password">
+                    </div>
+                    <div class="auth_row">
+                        <label class="check"><input type="checkbox" name="agree"> 이용약관 및 개인정보 처리방침에 동의합니다.</label>
+                    </div>
+                    <button class="auth_submit" type="submit">가입하기</button>
+                    <div class="auth_msg" id="authMsg" role="status" aria-live="polite"></div>
+                </form>
+
+                <div class="auth_divider">또는</div>
+
+                <div class="social">
+                    <button class="kakao" type="button">카카오로 가입하기</button>
+                    <button class="naver" type="button">네이버로 가입하기</button>
+                </div>
+
+                <div class="auth_signup">이미 회원이신가요? <a href="login.html">로그인</a></div>
+                <p class="auth_note">데모 사이트로 실제 가입은 동작하지 않습니다.</p>
+                <span class="auth_back"><a href="index.html">← 홈으로 돌아가기</a></span>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        var form = document.getElementById('signupForm');
+        var msg = document.getElementById('authMsg');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var pw = document.getElementById('password').value;
+            var pw2 = document.getElementById('password2').value;
+            var agree = document.querySelector('input[name="agree"]').checked;
+            if (!name || !email || !pw || !pw2) {
+                msg.className = 'auth_msg err';
+                msg.textContent = '모든 항목을 입력해 주세요.';
+                return;
+            }
+            if (pw.length < 8) {
+                msg.className = 'auth_msg err';
+                msg.textContent = '비밀번호는 8자 이상이어야 합니다.';
+                return;
+            }
+            if (pw !== pw2) {
+                msg.className = 'auth_msg err';
+                msg.textContent = '비밀번호가 일치하지 않습니다.';
+                return;
+            }
+            if (!agree) {
+                msg.className = 'auth_msg err';
+                msg.textContent = '약관에 동의해 주세요.';
+                return;
+            }
+            msg.className = 'auth_msg ok';
+            msg.textContent = '가입이 완료되었습니다. (데모 사이트)';
+        });
+        document.querySelectorAll('.social button').forEach(function (b) {
+            b.addEventListener('click', function () {
+                msg.className = 'auth_msg ok';
+                msg.textContent = b.textContent + ' — 데모 사이트입니다.';
+            });
+        });
+    </script>
+</body>
+</html>
