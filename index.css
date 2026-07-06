@@ -196,7 +196,11 @@
         header .header_util a:hover {color: rgb(131, 236, 255);}
         header a:focus, header a:focus-visible {outline: none;}
 
-        .textbox {position: absolute; top: 41%; left: 50%; transform: translate(-50%, -50%); z-index: 5; text-align: center; width: 100%;}
+        .textbox {position: absolute; top: 41%; left: 50%; transform: translate(-50%, -50%); z-index: 5; text-align: center; width: 100%; animation: heroReveal 5s cubic-bezier(0.22, 0.55, 0.25, 1) both;}
+        @keyframes heroReveal {
+            0%   {transform: translate(-50%, -50%) translateY(30px) scale(0.9); opacity: 0.25;}
+            100% {transform: translate(-50%, -50%) translateY(0) scale(1); opacity: 1;}
+        }
         .textbox ul {}
         .textbox li {font-size: 0; font-weight: 700; color: #fff; line-height: 0.95; letter-spacing: 0; text-shadow: 0 0 30px rgb(0, 22, 39);}
         .textbox li.text2 {margin-top: 22px;}
