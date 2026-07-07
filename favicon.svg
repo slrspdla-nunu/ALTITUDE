@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#111820"/>
+  <!-- 삼봉 설산 실루엣 -->
+  <path d="M4 24 L11 11 L14.5 17 L16 9.5 L21 18 L23.5 14 L28 24 Z" fill="#fff"/>
+  <!-- 설선/능선 포인트 -->
+  <path d="M16 9.5 L13.6 15 L16 14 L18 17.2 Z" fill="#83ecff"/>
+  <rect x="4" y="24" width="24" height="1.6" rx="0.8" fill="#83ecff"/>
+</svg>
